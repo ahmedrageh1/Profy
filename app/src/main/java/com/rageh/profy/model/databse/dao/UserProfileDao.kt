@@ -1,4 +1,4 @@
-package com.rageh.profy.model.dao
+package com.rageh.profy.model.databse.dao
 
 import androidx.room.*
 import com.rageh.profy.model.entity.UserProfile
