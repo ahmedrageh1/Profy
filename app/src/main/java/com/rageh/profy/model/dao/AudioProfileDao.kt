@@ -1,10 +1,7 @@
-package com.rageh.profy.data.dao
+package com.rageh.profy.model.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Update
-import com.rageh.profy.data.entity.AudioProfile
+import androidx.room.*
+import com.rageh.profy.model.entity.AudioProfile
 
 /**
  * Created by Ahmed on 2/27/2019.
@@ -20,4 +17,7 @@ interface AudioProfileDao {
 
     @Delete
     fun delete(audioProfile: AudioProfile)
+
+    @Query("SELECT * FROM audio_profiles where user_profile_id=:userProfileId")
+    fun getAudioProfile(userProfileId: Int)
 }
