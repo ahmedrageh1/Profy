@@ -6,11 +6,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import com.rageh.profy.dagger.ScopeApplication
 
 
 /**
  * Created by Ahmed on 2/25/2019.
  */
+@ScopeApplication
 class PermissionsUtils {
 
     @TargetApi(Build.VERSION_CODES.M)

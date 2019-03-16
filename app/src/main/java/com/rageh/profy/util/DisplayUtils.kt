@@ -2,10 +2,12 @@ package com.rageh.profy.util
 
 import android.content.ContentResolver
 import android.provider.Settings
+import com.rageh.profy.dagger.ScopeApplication
 
 /**
  * Created by Ahmed on 2/25/2019.
  */
+@ScopeApplication
 class DisplayUtils {
 
     @Throws(Settings.SettingNotFoundException::class)

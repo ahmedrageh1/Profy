@@ -2,22 +2,27 @@ package com.rageh.profy.util
 
 import android.content.Context
 import android.media.AudioManager
+import com.rageh.profy.dagger.ScopeApplication
+import javax.inject.Inject
 
 
 /**
  * Created by Ahmed on 2/10/2019.
  */
-class AudioUtils {
+@ScopeApplication
+class AudioUtils @Inject constructor() {
     companion object {
         const val RINGING_MODE_RINGING = AudioManager.RINGER_MODE_NORMAL
         const val RINGING_MODE_SILENT = AudioManager.RINGER_MODE_SILENT
         const val RINGING_MODE_VIBRATION_ONLY = AudioManager.RINGER_MODE_VIBRATE
     }
 
-    private lateinit var context: Context
-    private lateinit var am: AudioManager
+    @Inject
+    lateinit var context: Context
+    @Inject
+    lateinit var am: AudioManager
 
-//    fun getAudioManager(): AudioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+//
 
     fun setRingingMode(ringingMode: Int) {
         am.mode = ringingMode

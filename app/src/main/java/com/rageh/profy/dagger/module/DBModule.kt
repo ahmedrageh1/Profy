@@ -2,7 +2,7 @@ package com.rageh.profy.dagger.module
 
 import android.content.Context
 import androidx.room.Room
-import com.rageh.profy.dagger.ApplicationScope
+import com.rageh.profy.dagger.ScopeApplication
 import com.rageh.profy.model.databse.SettingsProfilesDatabase
 import dagger.Module
 import dagger.Provides
@@ -14,7 +14,7 @@ class DBModule {
 
     @Inject
     @Provides
-    @ApplicationScope
+    @ScopeApplication
     fun settingsProfilesDatabase(context: Context): SettingsProfilesDatabase {
         return Room.databaseBuilder(
             context.getApplicationContext(),

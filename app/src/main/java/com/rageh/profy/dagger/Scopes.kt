@@ -8,14 +8,14 @@ import javax.inject.Scope
 @Scope
 @MustBeDocumented
 @Retention
-annotation class ApplicationScope
+annotation class ScopeApplication
 
 @Scope
 @MustBeDocumented
 @Retention
-annotation class ActivityScope
+annotation class ScopeActivity
 
 @Scope
 @MustBeDocumented
 @Retention
-annotation class FragmentScope
+annotation class ScopeFragment
