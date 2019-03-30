@@ -12,6 +12,7 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityComponent = ActivityComponent.init(this)
+        activityComponent.inject(this)
     }
 
 }
