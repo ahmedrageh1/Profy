@@ -19,5 +19,5 @@ interface AudioProfileDao {
     fun delete(audioProfile: AudioProfile)
 
     @Query("SELECT * FROM audio_profiles where user_profile_id=:userProfileId")
-    fun getAudioProfile(userProfileId: Int)
+    fun getAudioProfile(userProfileId: Int): AudioProfile
 }
