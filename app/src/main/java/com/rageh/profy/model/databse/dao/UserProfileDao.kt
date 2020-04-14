@@ -22,5 +22,5 @@ interface UserProfileDao {
     fun getProfile(profileId: Int): UserProfile
 
     @Query("SELECT * FROM user_profiles")
-    fun getAllProfiles(): ArrayList<UserProfile>
+    fun getAllProfiles(): List<UserProfile>
 }
