@@ -3,6 +3,7 @@ package com.rageh.profy.util
 import android.content.Context
 import android.media.AudioManager
 import com.rageh.profy.dagger.ScopeApplication
+import com.rageh.profy.model.entity.AudioProfile
 import javax.inject.Inject
 
 
@@ -11,12 +12,6 @@ import javax.inject.Inject
  */
 @ScopeApplication
 class AudioUtils @Inject constructor() {
-    companion object {
-        const val RINGING_MODE_RINGING = AudioManager.RINGER_MODE_NORMAL
-        const val RINGING_MODE_SILENT = AudioManager.RINGER_MODE_SILENT
-        const val RINGING_MODE_VIBRATION_ONLY = AudioManager.RINGER_MODE_VIBRATE
-    }
-
     @Inject
     lateinit var context: Context
     @Inject
@@ -24,16 +19,16 @@ class AudioUtils @Inject constructor() {
 
 //
 
-    fun setRingingMode(ringingMode: Int) {
-        am.mode = ringingMode
+    fun setRingerMode(@AudioProfile.RingMode ringerMode: Int) {
+        am.ringerMode = ringerMode
     }
 
-    fun setRingingLevel(level: Int) = am.setStreamVolume(AudioManager.STREAM_RING, level, 0)
+    fun setRingLevel(level: Int) = am.setStreamVolume(AudioManager.STREAM_RING, level, 0)
     fun setCallLevel(level: Int) = am.setStreamVolume(AudioManager.STREAM_VOICE_CALL, level, 0)
     fun setMusicLevel(level: Int) = am.setStreamVolume(AudioManager.STREAM_MUSIC, level, 0)
 
-
-    fun getMaxRingingLevel(): Int = am.getStreamMaxVolume(AudioManager.STREAM_RING)
+    fun getRingerMode(): Int = am.ringerMode
+    fun getMaxRingLevel(): Int = am.getStreamMaxVolume(AudioManager.STREAM_RING)
     fun getMaxMusicLevel(): Int = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
     fun getMaxCallLevel(): Int = am.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL)
 

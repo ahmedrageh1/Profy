@@ -33,5 +33,4 @@ class DisplayUtils {
     @Throws(Settings.SettingNotFoundException::class)
     fun setScreenOffTimeout(contentResolver: ContentResolver, timeout: Int) =
         Settings.System.putInt(contentResolver, Settings.System.SCREEN_OFF_TIMEOUT, timeout)
-
 }
