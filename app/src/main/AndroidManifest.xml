@@ -3,20 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rageh.profy">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
-            android:allowBackup="true"
-            android:fullBackupContent="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:name=".ProfyApp"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            tools:ignore="GoogleAppIndexingWarning">
+        android:name=".ProfyApp"
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
 
         <activity android:name=".ui.view.activity.SplashActivity">
             <intent-filter>
@@ -26,6 +30,10 @@
             </intent-filter>
         </activity>
 
+        <receiver
+            android:name=".receiver.GeofenceBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false" />
         <receiver
             android:name=".receiver.BootCompleteReceiver"
             android:enabled="true"
