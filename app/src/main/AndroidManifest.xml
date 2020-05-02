@@ -20,21 +20,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <receiver
-            android:name=".receiver.ProfileUriReceiver"
-            android:enabled="true"
-            android:exported="true">
+        <activity android:name=".ui.view.activity.ProfyUriHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
                 <data
-                    android:host="*"
+                    android:host="profile"
                     android:scheme="profy" />
             </intent-filter>
-        </receiver>
+        </activity>
         <receiver
             android:name=".receiver.GeofenceBroadcastReceiver"
             android:enabled="true"
@@ -50,12 +44,9 @@
         <activity android:name=".ui.view.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>
