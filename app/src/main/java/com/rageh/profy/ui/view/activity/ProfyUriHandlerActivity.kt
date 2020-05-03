@@ -18,7 +18,7 @@ class ProfyUriHandlerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profy_uri_handler)
         intent.dataString?.let {
-            Log.d("Uri Data=", it)
+            Log.d("Intent Data=", it)
         }
     }
 }
