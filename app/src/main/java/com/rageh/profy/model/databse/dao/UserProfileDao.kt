@@ -1,5 +1,6 @@
 package com.rageh.profy.model.databse.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.rageh.profy.model.entity.UserProfile
 
@@ -22,5 +23,5 @@ interface UserProfileDao {
     fun getProfile(profileId: Int): UserProfile
 
     @Query("SELECT * FROM user_profiles")
-    fun getAllProfiles(): List<UserProfile>
+    fun getAllProfiles(): LiveData<List<UserProfile>>
 }

@@ -1,4 +1,4 @@
-package com.rageh.profy.ui.view.activity
+package com.rageh.profy.ui.activity
 
 import android.os.Bundle
 import android.util.Log

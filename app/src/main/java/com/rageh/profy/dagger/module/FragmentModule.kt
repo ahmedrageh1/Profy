@@ -2,8 +2,8 @@ package com.rageh.profy.dagger.module
 
 import android.content.Context
 import com.rageh.profy.dagger.ScopeFragment
-import com.rageh.profy.ui.view.base.BaseActivity
-import com.rageh.profy.ui.view.base.BaseFragment
+import com.rageh.profy.ui.base.BaseActivity
+import com.rageh.profy.ui.base.BaseFragment
 import dagger.Module
 import dagger.Provides
 
@@ -12,12 +12,12 @@ class FragmentModule(private val fragment: BaseFragment) {
     @ScopeFragment
     @Provides
     fun context(): Context {
-        return fragment.activity!!
+        return fragment.requireActivity()
     }
 
     @ScopeFragment
     @Provides
     fun activity(): BaseActivity {
-        return fragment.activity!! as BaseActivity
+        return fragment.requireActivity() as BaseActivity
     }
 }

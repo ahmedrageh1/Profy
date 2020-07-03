@@ -2,7 +2,7 @@ package com.rageh.profy.dagger.component
 
 import com.rageh.profy.dagger.ScopeFragment
 import com.rageh.profy.dagger.module.FragmentModule
-import com.rageh.profy.ui.view.base.BaseFragment
+import com.rageh.profy.ui.base.BaseFragment
 import dagger.Subcomponent
 
 @ScopeFragment

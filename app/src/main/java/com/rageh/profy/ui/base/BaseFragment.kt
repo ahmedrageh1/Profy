@@ -1,4 +1,4 @@
-package com.rageh.profy.ui.view.base
+package com.rageh.profy.ui.base
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

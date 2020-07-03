@@ -17,7 +17,7 @@ class DBModule {
     @ScopeApplication
     fun settingsProfilesDatabase(context: Context): SettingsProfilesDatabase {
         return Room.databaseBuilder(
-            context.getApplicationContext(),
+            context,
             SettingsProfilesDatabase::class.java, "settings_profiles"
         )
             .build()
