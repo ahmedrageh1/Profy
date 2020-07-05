@@ -2,38 +2,26 @@ package com.rageh.profy.model.entity
 
 import android.media.AudioManager
 import androidx.annotation.IntDef
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 /**
  * Created by Ahmed on 2/27/2019.
  */
-@Entity(
-    tableName = "audio_profiles",
-    foreignKeys = [
-        ForeignKey(
-            entity = UserProfile::class,
-            parentColumns = arrayOf("id"),
-            childColumns = arrayOf("user_profile_id"),
-            onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE
-        )
-    ]
-    , indices = [Index("user_profile_id", unique = true)]
-)
+@Entity(tableName = "audio_profiles")
 data class AudioProfile(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
-    @ColumnInfo(name = "user_profile_id")
-    var userProfileId: Long,
     @ColumnInfo(name = "ringer_mode")
     @RingMode
-    var ringerMode: Int,
+    val ringerMode: Int,
     @ColumnInfo(name = "ring_level")
-    var ringLevel: Int,
+    val ringLevel: Int,
     @ColumnInfo(name = "call_level")
-    var callLevel: Int,
+    val callLevel: Int,
     @ColumnInfo(name = "music_level")
-    var musicLevel: Int
+    val musicLevel: Int
 
 ) {
     @IntDef(

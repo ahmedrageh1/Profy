@@ -1,23 +1,17 @@
 package com.rageh.profy.model.databse.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Query
+import com.rageh.profy.model.databse.dao.base.BaseDao
 import com.rageh.profy.model.entity.AudioProfile
 
 /**
  * Created by Ahmed on 2/27/2019.
  */
 @Dao
-interface AudioProfileDao {
+interface AudioProfileDao : BaseDao<AudioProfile> {
 
-    @Insert
-    fun insert(audioProfile: AudioProfile)
+    @Query("SELECT * FROM audio_profiles")
+    fun getAudioProfile(): AudioProfile
 
-    @Update
-    fun update(audioProfile: AudioProfile)
-
-    @Delete
-    fun delete(audioProfile: AudioProfile)
-
-    @Query("SELECT * FROM audio_profiles where user_profile_id=:userProfileId")
-    fun getAudioProfile(userProfileId: Int): AudioProfile
 }

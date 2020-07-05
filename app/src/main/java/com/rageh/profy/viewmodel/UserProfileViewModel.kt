@@ -1,21 +1,17 @@
 package com.rageh.profy.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rageh.profy.model.entity.UserProfile
+import com.rageh.profy.model.repository.UserProfilesRepo
 
-class UserProfileViewModel @ViewModelInject constructor() : ViewModel() {
+class UserProfileViewModel
+@ViewModelInject constructor(private val userProfilesRepo: UserProfilesRepo) : ViewModel() {
+
     val userProfiles by lazy {
-        MutableLiveData<List<UserProfile>>()
-            .also {
-                println("initialized")
-//            loadUserProfiles()
-            }
+        loadUserProfiles()
     }
 
-    private fun loadUserProfiles() {
 
-    }
+    private fun loadUserProfiles() = userProfilesRepo.getAllUserProfiles()
 
 }
