@@ -2,22 +2,21 @@ package com.rageh.profy.util
 
 import android.content.Context
 import android.media.AudioManager
-import com.rageh.profy.dagger.ScopeApplication
 import com.rageh.profy.model.entity.AudioProfile
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
 
 /**
  * Created by Ahmed on 2/10/2019.
  */
-@ScopeApplication
-class AudioUtils @Inject constructor() {
-    @Inject
-    lateinit var context: Context
-    @Inject
-    lateinit var am: AudioManager
+@Singleton
+class AudioUtils @Inject constructor(@ApplicationContext private val context: Context) {
 
-//
+    private val am: AudioManager by lazy {
+        context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+    }
 
     fun setRingerMode(@AudioProfile.RingMode ringerMode: Int) {
         am.ringerMode = ringerMode

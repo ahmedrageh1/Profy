@@ -5,14 +5,13 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Rect
 import android.os.Build
-import com.rageh.profy.dagger.ScopeApplication
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.InputStream
 import javax.inject.Inject
+import javax.inject.Singleton
 
-@ScopeApplication
-public class WallpaperUtils() {
-    @Inject
-    lateinit var context: Context
+@Singleton
+class WallpaperUtils @Inject constructor(@ApplicationContext private val context: Context) {
 
     fun setWallpaper(someBitmap: Bitmap) {
         val wallpaperManager = WallpaperManager.getInstance(context)

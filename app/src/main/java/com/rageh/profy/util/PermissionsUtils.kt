@@ -6,13 +6,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
-import com.rageh.profy.dagger.ScopeApplication
+import javax.inject.Singleton
 
 
 /**
  * Created by Ahmed on 2/25/2019.
  */
-@ScopeApplication
+@Singleton
 class PermissionsUtils {
 
     @TargetApi(Build.VERSION_CODES.M)
