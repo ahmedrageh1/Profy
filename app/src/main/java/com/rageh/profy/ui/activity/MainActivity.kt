@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var settingsProfilesDatabase: SettingsProfilesDatabase
 
+    private val userProfileViewModel: UserProfileViewModel by viewModels()
     private val adapter: UserProfilesAdapter by lazy {
         UserProfilesAdapter()
     }
@@ -25,14 +26,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val userProfileViewModel: UserProfileViewModel by viewModels()
+
         recyclerView.adapter = adapter
         userProfileViewModel.userProfiles.observe(this, Observer<List<UserProfile>> {
             adapter.submitList(it)
         })
         addBt.setOnClickListener {
-            settingsProfilesDatabase.userProfiles()
-                .insert(UserProfile(0, "test ${System.currentTimeMillis()}"))
+            userProfileViewModel.insertUserProfile(
+                UserProfile(
+                    0,
+                    "test ${System.currentTimeMillis()}"
+                )
+            )
         }
     }
 }

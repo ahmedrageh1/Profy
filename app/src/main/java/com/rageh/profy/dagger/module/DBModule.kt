@@ -26,4 +26,11 @@ class DBModule {
         )
             .build()
     }
+
+    @Inject
+    @Provides
+    @Singleton
+    fun userProfileDao(settingsProfilesDatabase: SettingsProfilesDatabase) =
+        settingsProfilesDatabase.userProfiles()
+
 }
