@@ -33,4 +33,28 @@ class DBModule {
     fun userProfileDao(settingsProfilesDatabase: SettingsProfilesDatabase) =
         settingsProfilesDatabase.userProfiles()
 
+    @Inject
+    @Provides
+    @Singleton
+    fun audioProfileDao(settingsProfilesDatabase: SettingsProfilesDatabase) =
+        settingsProfilesDatabase.audioProfiles()
+
+    @Inject
+    @Provides
+    @Singleton
+    fun displayProfileDao(settingsProfilesDatabase: SettingsProfilesDatabase) =
+        settingsProfilesDatabase.displayProfiles()
+
+    @Inject
+    @Provides
+    @Singleton
+    fun wallPaperProfileDao(settingsProfilesDatabase: SettingsProfilesDatabase) =
+        settingsProfilesDatabase.wallPaperProfiles()
+
+    @Inject
+    @Provides
+    @Singleton
+    fun profileTriggerDao(settingsProfilesDatabase: SettingsProfilesDatabase) =
+        settingsProfilesDatabase.profileTriggers()
+
 }

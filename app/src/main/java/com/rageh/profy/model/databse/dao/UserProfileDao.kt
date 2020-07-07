@@ -13,7 +13,7 @@ import com.rageh.profy.model.entity.UserProfile
 interface UserProfileDao : BaseDao<UserProfile> {
 
     @Query("SELECT * FROM user_profiles where id=:profileId")
-    fun getProfile(profileId: Int): UserProfile
+    fun getProfile(profileId: Int): LiveData<UserProfile>
 
     @Query("SELECT * FROM user_profiles")
     fun getAllProfiles(): LiveData<List<UserProfile>>

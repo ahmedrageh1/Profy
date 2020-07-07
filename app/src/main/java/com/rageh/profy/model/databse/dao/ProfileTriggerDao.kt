@@ -9,10 +9,13 @@ import com.rageh.profy.model.entity.ProfileTrigger
 @Dao
 interface ProfileTriggerDao : BaseDao<ProfileTrigger> {
 
-    @Query("SELECT * FROM profile_triggers")
-    fun getAllProfileTriggers(): LiveData<List<ProfileTrigger>>
+    @Query("SELECT * FROM profile_triggers WHERE id=:triggerId")
+    fun getProfileTrigger(triggerId: Long): LiveData<ProfileTrigger>
 
     @Query("SELECT * FROM profile_triggers WHERE type=:type")
-    fun getProfileTriggersByType(type: Int): LiveData<List<ProfileTrigger>>
+    fun getProfileTriggersByType(@ProfileTrigger.TriggerType type: Int): LiveData<List<ProfileTrigger>>
+
+    @Query("SELECT * FROM profile_triggers")
+    fun getAllProfileTriggers(): LiveData<List<ProfileTrigger>>
 
 }
