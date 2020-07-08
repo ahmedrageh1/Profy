@@ -38,6 +38,7 @@ captures/
 .idea/tasks.xml
 .idea/modules.xml
 .idea/compiler.xml
+.idea/render.experimental.xml
 .idea/encodings.xml
 .idea/gradle.xml
 .idea/navEditor.xml

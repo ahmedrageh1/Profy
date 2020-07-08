@@ -2,7 +2,7 @@ package com.rageh.profy.util
 
 import android.content.Context
 import android.media.AudioManager
-import com.rageh.profy.model.entity.AudioProfile
+import com.rageh.profy.data.entity.AudioProfile
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -27,6 +27,11 @@ class AudioUtils @Inject constructor(@ApplicationContext private val context: Co
     fun setMusicLevel(level: Int) = am.setStreamVolume(AudioManager.STREAM_MUSIC, level, 0)
 
     fun getRingerMode(): Int = am.ringerMode
+
+    fun getRingLevel(): Int = am.getStreamVolume(AudioManager.STREAM_RING)
+    fun getMusicLevel(): Int = am.getStreamVolume(AudioManager.STREAM_MUSIC)
+    fun getCallLevel(): Int = am.getStreamVolume(AudioManager.STREAM_VOICE_CALL)
+
     fun getMaxRingLevel(): Int = am.getStreamMaxVolume(AudioManager.STREAM_RING)
     fun getMaxMusicLevel(): Int = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
     fun getMaxCallLevel(): Int = am.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL)

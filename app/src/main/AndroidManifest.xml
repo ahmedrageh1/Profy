@@ -22,7 +22,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".presentation.activity.MainActivity" />
 
         <receiver
                 android:name=".receiver.BluetoothDevicesStatusReceiver"
@@ -35,15 +35,15 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.activity.ProfyUriHandlerActivity">
+        <activity android:name=".presentation.activity.ProfyUriHandlerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                        android:host="profile"
-                        android:scheme="profy" />
+                    android:host="profile"
+                    android:scheme="profy" />
             </intent-filter>
         </activity>
 
@@ -61,8 +61,8 @@
         </receiver>
 
         <activity
-                android:name=".ui.activity.SplashActivity"
-                android:theme="@style/AppTheme.NoActionBar.FullScreen">
+            android:name=".presentation.activity.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
