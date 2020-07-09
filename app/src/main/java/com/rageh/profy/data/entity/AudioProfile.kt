@@ -22,7 +22,7 @@ data class AudioProfile(
     val callLevel: Int,
     @ColumnInfo(name = "music_level")
     val musicLevel: Int
-
+//TODO add delay seconds option 
 ) {
     @IntDef(
         AudioManager.RINGER_MODE_NORMAL,

@@ -5,8 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rageh.profy.data.entity.UserProfile
 import com.rageh.profy.data.repository.UserProfilesRepo
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.launch
 
+@ActivityRetainedScoped
 class UserProfileViewModel
 @ViewModelInject constructor(private val userProfilesRepo: UserProfilesRepo) : ViewModel() {
 
