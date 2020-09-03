@@ -13,6 +13,8 @@ import androidx.room.PrimaryKey
 data class AudioProfile(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
+    @ColumnInfo(name = "name")
+    var name: String = "",
     @ColumnInfo(name = "ringer_mode")
     @RingMode
     val ringerMode: Int,
@@ -21,7 +23,11 @@ data class AudioProfile(
     @ColumnInfo(name = "call_level")
     val callLevel: Int,
     @ColumnInfo(name = "music_level")
-    val musicLevel: Int
+    val musicLevel: Int,
+    @ColumnInfo(name = "system_level")
+    val systemLevel: Int,
+    @ColumnInfo(name = "notification_level")
+    val notificationLevel: Int
 //TODO add delay seconds option 
 ) {
     @IntDef(

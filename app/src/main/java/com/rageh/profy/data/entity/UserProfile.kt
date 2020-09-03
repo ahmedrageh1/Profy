@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class UserProfile(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
-    var name: String
+    var name: String,
+    var audioProfileId: Long
 )

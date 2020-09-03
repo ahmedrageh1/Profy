@@ -6,18 +6,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.rageh.profy.R
-import com.rageh.profy.data.entity.UserProfile
+import com.rageh.profy.data.entity.FullUserProfile
 
-class UserProfilesAdapter constructor() : ListAdapter<UserProfile, RecyclerView.ViewHolder>(object :
-    DiffUtil.ItemCallback<UserProfile>() {
-    override fun areItemsTheSame(oldItem: UserProfile, newItem: UserProfile) =
-        oldItem.id == newItem.id
+class UserProfilesAdapter constructor() :
+    ListAdapter<FullUserProfile, RecyclerView.ViewHolder>(object :
+        DiffUtil.ItemCallback<FullUserProfile>() {
+        override fun areItemsTheSame(oldItem: FullUserProfile, newItem: FullUserProfile) =
+            oldItem.profile.id == newItem.profile.id
 
 
-    override fun areContentsTheSame(oldItem: UserProfile, newItem: UserProfile) =
-        oldItem.toString() == newItem.toString()
+        override fun areContentsTheSame(oldItem: FullUserProfile, newItem: FullUserProfile) =
+            oldItem.profile.toString() == newItem.profile.toString()
 
-}) {
+    }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         object : RecyclerView.ViewHolder(

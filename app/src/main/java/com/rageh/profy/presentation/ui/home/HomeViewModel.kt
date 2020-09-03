@@ -1,4 +1,4 @@
-package com.rageh.profy.presentation.viewmodel
+package com.rageh.profy.presentation.ui.home
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
@@ -9,13 +9,12 @@ import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.launch
 
 @ActivityRetainedScoped
-class UserProfileViewModel
+class HomeViewModel
 @ViewModelInject constructor(private val userProfilesRepo: UserProfilesRepo) : ViewModel() {
 
     val userProfiles by lazy {
         loadUserProfiles()
     }
-
 
     private fun loadUserProfiles() = userProfilesRepo.getAllUserProfiles()
 

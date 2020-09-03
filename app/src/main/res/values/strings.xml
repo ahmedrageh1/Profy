@@ -3,4 +3,9 @@
     <string name="home">Home</string>
     <string name="dashboard">Dashboard</string>
     <string name="notifications">Notifications</string>
+    <string name="ring_level">Ring Level</string>
+    <string name="call_level">Call Level</string>
+    <string name="music_level">Music Level</string>
+    <string name="system_level">System Level</string>
+    <string name="notification_level">Notification Level</string>
 </resources>

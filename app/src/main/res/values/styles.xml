@@ -18,4 +18,8 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="field_lbl_tv">
+        <item name="android:textSize">15sp</item>
+    </style>
+
 </resources>

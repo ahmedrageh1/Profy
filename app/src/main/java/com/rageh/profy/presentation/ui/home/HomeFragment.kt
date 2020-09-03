@@ -1,4 +1,4 @@
-package com.rageh.profy.presentation.fragment
+package com.rageh.profy.presentation.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,15 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.rageh.profy.R
+import com.rageh.profy.data.entity.FullUserProfile
 import com.rageh.profy.data.entity.UserProfile
 import com.rageh.profy.presentation.adapter.UserProfilesAdapter
-import com.rageh.profy.presentation.viewmodel.UserProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-    private val userProfileViewModel: UserProfileViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
     private val adapter: UserProfilesAdapter by lazy {
         UserProfilesAdapter()
     }
@@ -42,15 +42,15 @@ class HomeFragment : Fragment() {
 //                    ContextCompat.getDrawable(requireContext(), R.drawable.list_divider_4)
 //                })
         }
-        userProfileViewModel.userProfiles.observe(viewLifecycleOwner, Observer<List<UserProfile>> {
+        viewModel.userProfiles.observe(viewLifecycleOwner, Observer<List<FullUserProfile>> {
             adapter.submitList(it)
         })
         addBt.setOnClickListener {
             //TODO to be removed
-            userProfileViewModel.insertUserProfile(
+            viewModel.insertUserProfile(
                 UserProfile(
                     0,
-                    "test ${System.currentTimeMillis()}"
+                    "test ${System.currentTimeMillis()}", 0
                 )
             )
         }
