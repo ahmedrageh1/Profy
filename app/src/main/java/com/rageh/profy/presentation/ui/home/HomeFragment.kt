@@ -1,12 +1,11 @@
 package com.rageh.profy.presentation.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import com.rageh.profy.R
 import com.rageh.profy.data.entity.FullUserProfile
 import com.rageh.profy.data.entity.UserProfile
@@ -19,6 +18,11 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     private val adapter: UserProfilesAdapter by lazy {
         UserProfilesAdapter()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -56,5 +60,20 @@ class HomeFragment : Fragment() {
         }
     }
 
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.add, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.item_add -> {
+                view?.findNavController()?.navigate(R.id.addAudioFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
 }

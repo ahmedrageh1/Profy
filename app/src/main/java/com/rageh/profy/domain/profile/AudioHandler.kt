@@ -15,6 +15,7 @@ class AudioHandler @Inject constructor(private val audioUtils: AudioUtils) {
             callLevel = getCallLevel(),
             musicLevel = getMusicLevel(),
             systemLevel = getSystemLevel(),
+            alarmLevel = getAlarmLevel(),
             notificationLevel = getNotificationLevel()
         )
     }
@@ -25,6 +26,19 @@ class AudioHandler @Inject constructor(private val audioUtils: AudioUtils) {
         setCallLevel(audioProfile.callLevel)
         setMusicLevel(audioProfile.musicLevel)
         setSystemLevel(audioProfile.systemLevel)
+        setAlarmLevel(audioProfile.alarmLevel)
         setNotificationLevel(audioProfile.notificationLevel)
+    }
+
+    fun getMaxLevelsProfile() = audioUtils.run {
+        AudioProfile(
+            ringerMode = getRingerMode(),
+            ringLevel = getMaxRingLevel(),
+            callLevel = getMaxCallLevel(),
+            musicLevel = getMaxMusicLevel(),
+            systemLevel = getMaxSystemLevel(),
+            alarmLevel = getMaxAlarmLevel(),
+            notificationLevel = getMaxNotificationLevel()
+        )
     }
 }

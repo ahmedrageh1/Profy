@@ -4,8 +4,16 @@
     <string name="dashboard">Dashboard</string>
     <string name="notifications">Notifications</string>
     <string name="ring_level">Ring Level</string>
+    <string name="ring_mode">Ring Mode</string>
     <string name="call_level">Call Level</string>
     <string name="music_level">Music Level</string>
     <string name="system_level">System Level</string>
     <string name="notification_level">Notification Level</string>
+    <string name="save">Save</string>
+    <string name="add">Add</string>
+    <string name="alarm_level">Alarm Level</string>
+    <string name="silent">Silent</string>
+    <string name="vibration_only">Vibration Only</string>
+    <string name="normal">Normal</string>
+    <string name="profile_name">Profile Name</string>
 </resources>

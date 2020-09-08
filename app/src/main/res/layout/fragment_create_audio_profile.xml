@@ -1,113 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
+        android:fillViewport="true"
         tools:context=".presentation.ui.audio.CreateAudioProfileFragment">
 
-    <TextView
-            android:id="@+id/ring_level_lbl_tv"
-            style="@style/field_lbl_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="@string/ring_level"
-            tools:ignore="MissingConstraints" />
-
-    <SeekBar
-            android:id="@+id/ringLevelSB"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            tools:max="10"
-            tools:progress="4" />
+            android:padding="16dp">
 
-    <TextView
-            android:id="@+id/call_level_lbl_tv"
-            style="@style/field_lbl_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="@string/call_level"
-            tools:ignore="MissingConstraints" />
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints">
 
-    <SeekBar
-            android:id="@+id/callLevelSB"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            tools:max="10"
-            tools:progress="5" />
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/profile_name"
+                    android:inputType="text"
+                    android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-            android:id="@+id/music_level_lbl_tv"
-            style="@style/field_lbl_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="@string/music_level"
-            tools:ignore="MissingConstraints" />
+        <TextView
+                android:id="@+id/ring_mode_lbl_tv"
+                style="@style/field_lbl_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/ring_mode"
+                tools:ignore="MissingConstraints" />
 
-    <SeekBar
-            android:id="@+id/musicLevelSB"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            tools:max="10"
-            tools:progress="3" />
+        <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/ringModeSp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/ring_modes"
+                tools:ignore="MissingConstraints" />
 
-    <TextView
-            android:id="@+id/system_level_lbl_tv"
-            style="@style/field_lbl_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="@string/system_level"
-            tools:ignore="MissingConstraints" />
+        <TextView
+                android:id="@+id/ring_level_lbl_tv"
+                style="@style/field_lbl_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/ring_level"
+                tools:ignore="MissingConstraints" />
 
-    <SeekBar
-            android:id="@+id/systemLevelSB"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            tools:max="10"
-            tools:progress="4" />
+        <SeekBar
+                android:id="@+id/ringLevelSB"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                tools:max="10"
+                tools:progress="4" />
 
-    <TextView
-            android:id="@+id/notification_level_lbl_tv"
-            style="@style/field_lbl_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="@string/notification_level"
-            tools:ignore="MissingConstraints" />
+        <TextView
+                android:id="@+id/call_level_lbl_tv"
+                style="@style/field_lbl_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/call_level"
+                tools:ignore="MissingConstraints" />
 
-    <SeekBar
-            android:id="@+id/notificationLevelSB"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            tools:max="10"
-            tools:progress="6" />
+        <SeekBar
+                android:id="@+id/callLevelSB"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                tools:max="10"
+                tools:progress="5" />
 
-    <androidx.constraintlayout.helper.widget.Flow
-            android:id="@+id/flow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:constraint_referenced_ids="ring_level_lbl_tv,ringLevelSB,call_level_lbl_tv,callLevelSB,music_level_lbl_tv,musicLevelSB,system_level_lbl_tv,systemLevelSB,notification_level_lbl_tv,notificationLevelSB"
-            app:flow_horizontalAlign="start"
-            app:flow_verticalBias="0"
-            app:flow_verticalGap="12dp"
-            app:flow_verticalStyle="packed"
-            tools:ignore="MissingConstraints" />
+        <TextView
+                android:id="@+id/music_level_lbl_tv"
+                style="@style/field_lbl_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/music_level"
+                tools:ignore="MissingConstraints" />
+
+        <SeekBar
+                android:id="@+id/musicLevelSB"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                tools:max="10"
+                tools:progress="3" />
+
+        <TextView
+                android:id="@+id/system_level_lbl_tv"
+                style="@style/field_lbl_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/system_level"
+                tools:ignore="MissingConstraints" />
+
+        <SeekBar
+                android:id="@+id/systemLevelSB"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                tools:max="10"
+                tools:progress="4" />
+
+        <TextView
+                android:id="@+id/alarm_level_lbl_tv"
+                style="@style/field_lbl_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/alarm_level"
+                tools:ignore="MissingConstraints" />
+
+        <SeekBar
+                android:id="@+id/alarmLevelSB"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                tools:max="10"
+                tools:progress="4" />
+
+        <TextView
+                android:id="@+id/notification_level_lbl_tv"
+                style="@style/field_lbl_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/notification_level"
+                tools:ignore="MissingConstraints" />
+
+        <SeekBar
+                android:id="@+id/notificationLevelSB"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                tools:max="10"
+                tools:progress="6" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="nameIL,
+                ring_mode_lbl_tv,ringModeSp,ring_level_lbl_tv,ringLevelSB,
+                call_level_lbl_tv,callLevelSB,music_level_lbl_tv,musicLevelSB,
+                system_level_lbl_tv,systemLevelSB,alarm_level_lbl_tv,alarmLevelSB,
+                notification_level_lbl_tv,notificationLevelSB"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalBias="0"
+                app:flow_verticalGap="12dp"
+                app:flow_verticalStyle="packed"
+                tools:ignore="MissingConstraints">
+
+
+        </androidx.constraintlayout.helper.widget.Flow>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,16 +1,14 @@
 package com.rageh.profy.data.repository.base
 
+import androidx.lifecycle.liveData
 import com.rageh.profy.data.databse.dao.base.BaseDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 open class BaseRepo<T> @Inject constructor(private val baseDao: BaseDao<T>) {
-    suspend fun insertIntoDB(item: T) {
-        withContext(Dispatchers.IO) {
-            baseDao.insert(item)
-        }
-    }
+    fun insertIntoDB(item: T) =
+        liveData { withContext(Dispatchers.IO) { emit(baseDao.insert(item)) } }
 
     suspend fun updateInDB(item: T) {
         withContext(Dispatchers.IO) {
