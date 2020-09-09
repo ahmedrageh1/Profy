@@ -13,7 +13,7 @@
 
     <fragment
             android:id="@+id/addAudioFragment"
-            android:name="com.rageh.profy.presentation.ui.audio.CreateAudioProfileFragment"
+            android:name="com.rageh.profy.presentation.ui.audio.AudioProfileFragment"
             android:label="fragment_add_audio"
-            tools:layout="@layout/fragment_create_audio_profile" />
+            tools:layout="@layout/fragment_audio_profile" />
 </navigation>

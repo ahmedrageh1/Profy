@@ -2,20 +2,19 @@ package com.rageh.profy.presentation.ui.audio
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.rageh.profy.R
+import com.rageh.profy.databinding.FragmentAudioProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_create_audio_profile.*
+import kotlinx.android.synthetic.main.fragment_audio_profile.*
 
 @AndroidEntryPoint
-class CreateAudioProfileFragment : Fragment(R.layout.fragment_create_audio_profile) {
+class AudioProfileFragment : Fragment() {
 
-    private val viewModel: CreateAudioProfileViewModel by viewModels()
+    private val viewModel: AudioProfileViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,24 +22,24 @@ class CreateAudioProfileFragment : Fragment(R.layout.fragment_create_audio_profi
         setHasOptionsMenu(true)
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return DataBindingUtil.inflate<FragmentAudioProfileBinding>(
+            inflater,
+            R.layout.fragment_audio_profile,
+            container,
+            false
+        ).apply {
+            lifecycleOwner = viewLifecycleOwner
+            vm = viewModel
+        }.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.maxLevelProfile.apply {
-            ringLevelSB.max = ringLevel
-            callLevelSB.max = callLevel
-            musicLevelSB.max = musicLevel
-            systemLevelSB.max = systemLevel
-            alarmLevelSB.max = alarmLevel
-            notificationLevelSB.max = notificationLevel
-        }
-        viewModel.currentAudioProfile.observe(viewLifecycleOwner, {
-            ringLevelSB.progress = it.ringLevel
-            callLevelSB.progress = it.callLevel
-            musicLevelSB.progress = it.musicLevel
-            systemLevelSB.progress = it.systemLevel
-            alarmLevelSB.progress = it.alarmLevel
-            notificationLevelSB.progress = it.notificationLevel
-        })
 
     }
 
