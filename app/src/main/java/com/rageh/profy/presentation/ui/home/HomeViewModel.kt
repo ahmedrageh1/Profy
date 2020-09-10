@@ -2,11 +2,9 @@ package com.rageh.profy.presentation.ui.home
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.rageh.profy.data.entity.UserProfile
 import com.rageh.profy.data.repository.UserProfilesRepo
 import dagger.hilt.android.scopes.ActivityRetainedScoped
-import kotlinx.coroutines.launch
 
 @ActivityRetainedScoped
 class HomeViewModel
@@ -18,10 +16,8 @@ class HomeViewModel
 
     private fun loadUserProfiles() = userProfilesRepo.getAllUserProfiles()
 
-    fun insertUserProfile(userProfile: UserProfile) {
-        viewModelScope.launch {
-            userProfilesRepo.insertIntoDB(userProfile)
-        }
-    }
+    fun insertUserProfile(userProfile: UserProfile) =
+        userProfilesRepo.insertIntoDB(userProfile)
+
 
 }

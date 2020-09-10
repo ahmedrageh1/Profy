@@ -1,15 +1,13 @@
 package com.rageh.profy.presentation.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.rageh.profy.R
 import com.rageh.profy.data.entity.FullUserProfile
+import com.rageh.profy.databinding.ItemUserProfileBinding
+import com.rageh.profy.presentation.base.BaseSimpleBindingAdapter
 
 class UserProfilesAdapter constructor() :
-    ListAdapter<FullUserProfile, RecyclerView.ViewHolder>(object :
+    BaseSimpleBindingAdapter<FullUserProfile, ItemUserProfileBinding>(object :
         DiffUtil.ItemCallback<FullUserProfile>() {
         override fun areItemsTheSame(oldItem: FullUserProfile, newItem: FullUserProfile) =
             oldItem.profile.id == newItem.profile.id
@@ -20,12 +18,10 @@ class UserProfilesAdapter constructor() :
 
     }) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        object : RecyclerView.ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_user_profile, parent, false)
-        ) {}
+    override fun getItemLayout(viewType: Int) = R.layout.item_user_profile
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        //TODO add binding code
+    override fun onBindViewHolder(holder: ViewHolder<ItemUserProfileBinding>, position: Int) {
+        holder.viewBinding.profile = getItem(position)
     }
+
 }
