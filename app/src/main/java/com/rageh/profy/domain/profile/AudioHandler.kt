@@ -22,7 +22,7 @@ class AudioHandler @Inject constructor(private val audioUtils: AudioUtils) {
 
     fun setCurrentProfile(audioProfile: AudioProfile) = audioUtils.run {
         setRingerMode(audioProfile.ringerMode)
-        setCallLevel(audioProfile.callLevel)
+        setRingLevel(audioProfile.ringLevel)
         setCallLevel(audioProfile.callLevel)
         setMusicLevel(audioProfile.musicLevel)
         setSystemLevel(audioProfile.systemLevel)

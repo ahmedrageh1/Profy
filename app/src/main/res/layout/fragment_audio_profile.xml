@@ -5,9 +5,11 @@
 
     <data>
 
+        <import type="com.rageh.profy.presentation.ui.audio.AudioProfileViewModel" />
+
         <variable
                 name="vm"
-                type="com.rageh.profy.presentation.ui.audio.AudioProfileViewModel" />
+                type="AudioProfileViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -33,7 +35,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/profile_name"
                         android:inputType="text"
-                        android:maxLines="1" />
+                        android:maxLines="1"
+                        android:text="@={vm.currentAudioProfile.name}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -50,6 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/ring_modes"
+                    android:selectedItemPosition="@={vm.currentAudioProfile.ringerMode}"
                     tools:ignore="MissingConstraints" />
 
             <TextView
@@ -67,7 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="@{vm.maxLevelProfile.ringLevel}"
-                    android:progress="@{vm.currentAudioProfile.ringLevel}"
+                    android:progress="@={vm.currentAudioProfile.ringLevel}"
                     tools:ignore="MissingConstraints"
                     tools:max="10"
                     tools:progress="4" />
@@ -87,7 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="@{vm.maxLevelProfile.callLevel}"
-                    android:progress="@{vm.currentAudioProfile.callLevel}"
+                    android:progress="@={vm.currentAudioProfile.callLevel}"
                     tools:ignore="MissingConstraints"
                     tools:max="10"
                     tools:progress="5" />
@@ -107,7 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="@{vm.maxLevelProfile.musicLevel}"
-                    android:progress="@{vm.currentAudioProfile.musicLevel}"
+                    android:progress="@={vm.currentAudioProfile.musicLevel}"
                     tools:ignore="MissingConstraints"
                     tools:max="10"
                     tools:progress="3" />
@@ -127,7 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="@{vm.maxLevelProfile.systemLevel}"
-                    android:progress="@{vm.currentAudioProfile.systemLevel}"
+                    android:progress="@={vm.currentAudioProfile.systemLevel}"
                     tools:ignore="MissingConstraints"
                     tools:max="10"
                     tools:progress="4" />
@@ -147,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="@{vm.maxLevelProfile.alarmLevel}"
-                    android:progress="@{vm.currentAudioProfile.alarmLevel}"
+                    android:progress="@={vm.currentAudioProfile.alarmLevel}"
                     tools:ignore="MissingConstraints"
                     tools:max="10"
                     tools:progress="4" />
@@ -167,7 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:max="@{vm.maxLevelProfile.notificationLevel}"
-                    android:progress="@{vm.currentAudioProfile.notificationLevel}"
+                    android:progress="@={vm.currentAudioProfile.notificationLevel}"
                     tools:ignore="MissingConstraints"
                     tools:max="10"
                     tools:progress="6" />

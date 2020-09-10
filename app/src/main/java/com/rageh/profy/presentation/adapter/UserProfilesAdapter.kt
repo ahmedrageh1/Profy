@@ -26,6 +26,6 @@ class UserProfilesAdapter constructor() :
         ) {}
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
+        //TODO add binding code
     }
 }

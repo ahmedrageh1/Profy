@@ -2,6 +2,7 @@ package com.rageh.profy.data.entity
 
 import android.media.AudioManager
 import androidx.annotation.IntDef
+import androidx.databinding.BaseObservable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -17,21 +18,21 @@ data class AudioProfile(
     var name: String = "",
     @ColumnInfo(name = "ringer_mode")
     @RingMode
-    val ringerMode: Int,
+    var ringerMode: Int,
     @ColumnInfo(name = "ring_level")
-    val ringLevel: Int,
+    var ringLevel: Int,
     @ColumnInfo(name = "call_level")
-    val callLevel: Int,
+    var callLevel: Int,
     @ColumnInfo(name = "music_level")
-    val musicLevel: Int,
+    var musicLevel: Int,
     @ColumnInfo(name = "system_level")
-    val systemLevel: Int,
+    var systemLevel: Int,
     @ColumnInfo(name = "alarm_level")
-    val alarmLevel: Int,
+    var alarmLevel: Int,
     @ColumnInfo(name = "notification_level")
-    val notificationLevel: Int
+    var notificationLevel: Int
 //TODO add delay seconds option 
-) {
+) : BaseObservable() {
     @IntDef(
         AudioManager.RINGER_MODE_SILENT,
         AudioManager.RINGER_MODE_VIBRATE,

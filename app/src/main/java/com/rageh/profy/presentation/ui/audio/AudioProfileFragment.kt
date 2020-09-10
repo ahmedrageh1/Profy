@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import com.rageh.profy.R
 import com.rageh.profy.databinding.FragmentAudioProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_audio_profile.*
 
 @AndroidEntryPoint
 class AudioProfileFragment : Fragment() {
@@ -40,7 +39,6 @@ class AudioProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -51,17 +49,8 @@ class AudioProfileFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.item_save -> {
-                viewModel.saveAudioProfile(
-                    nameET.text.toString(),
-                    ringModeSp.selectedItemPosition,
-                    ringLevelSB.progress,
-                    callLevelSB.progress,
-                    musicLevelSB.progress,
-                    systemLevelSB.progress,
-                    alarmLevelSB.progress,
-                    notificationLevelSB.progress
-                ).observe(viewLifecycleOwner, {
-                    Log.e("success", it.toString())
+                viewModel.saveAudioProfile().observe(viewLifecycleOwner, {
+                    Log.d("success", it.toString())
                 })
                 true
             }
