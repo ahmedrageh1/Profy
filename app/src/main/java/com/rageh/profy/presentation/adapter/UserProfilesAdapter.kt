@@ -4,9 +4,10 @@ import androidx.recyclerview.widget.DiffUtil
 import com.rageh.profy.R
 import com.rageh.profy.data.entity.FullUserProfile
 import com.rageh.profy.databinding.ItemUserProfileBinding
+import com.rageh.profy.domain.profile.FullProfileHandler
 import com.rageh.profy.presentation.base.BaseSimpleBindingAdapter
 
-class UserProfilesAdapter constructor() :
+class UserProfilesAdapter constructor(val profileHandler: FullProfileHandler?) :
     BaseSimpleBindingAdapter<FullUserProfile, ItemUserProfileBinding>(object :
         DiffUtil.ItemCallback<FullUserProfile>() {
         override fun areItemsTheSame(oldItem: FullUserProfile, newItem: FullUserProfile) =
@@ -22,6 +23,7 @@ class UserProfilesAdapter constructor() :
 
     override fun onBindViewHolder(holder: ViewHolder<ItemUserProfileBinding>, position: Int) {
         holder.viewBinding.profile = getItem(position)
+        holder.viewBinding.handler = profileHandler
     }
 
 }

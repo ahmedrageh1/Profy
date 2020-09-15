@@ -7,8 +7,8 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 open class BaseRepo<T> @Inject constructor(private val baseDao: BaseDao<T>) {
-    fun insertIntoDB(item: T) =
-        liveData { withContext(Dispatchers.IO) { emit(baseDao.insert(item)) } }
+
+    fun insertIntoDB(item: T) = liveData(Dispatchers.IO) { emit(baseDao.insert(item)) }
 
     suspend fun updateInDB(item: T) {
         withContext(Dispatchers.IO) {

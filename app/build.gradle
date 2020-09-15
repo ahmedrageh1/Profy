@@ -20,6 +20,11 @@ android {
         dataBinding true
     }
     buildTypes {
+        debug{
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
             shrinkResources true
             minifyEnabled true
