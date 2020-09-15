@@ -13,4 +13,6 @@ class UserProfilesRepo @Inject constructor(private val userProfileDao: UserProfi
     BaseRepo<UserProfile>(userProfileDao) {
     fun getAllUserProfiles(): LiveData<List<FullUserProfile>> =
         userProfileDao.getAllFullProfiles()
+
+    fun getDefaultUserProfile() = userProfileDao.getDefaultProfile()
 }

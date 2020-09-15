@@ -40,4 +40,8 @@ data class AudioProfile(
     )
     @Retention(AnnotationRetention.SOURCE)
     annotation class RingMode
+
+    override fun toString(): String {
+        return name
+    }
 }

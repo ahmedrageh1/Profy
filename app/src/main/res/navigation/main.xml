@@ -12,8 +12,14 @@
             tools:layout="@layout/fragment_home" />
 
     <fragment
-            android:id="@+id/addAudioFragment"
+            android:id="@+id/audioProfileFragment"
             android:name="com.rageh.profy.presentation.ui.audio.AudioProfileFragment"
-            android:label="fragment_add_audio"
+            android:label="fragment_audio"
             tools:layout="@layout/fragment_audio_profile" />
+
+    <fragment
+            android:id="@+id/userProfileFragment"
+            android:name="com.rageh.profy.presentation.ui.profile.UserProfileFragment"
+            android:label="fragment_user_profile"
+            tools:layout="@layout/fragment_user_profile" />
 </navigation>

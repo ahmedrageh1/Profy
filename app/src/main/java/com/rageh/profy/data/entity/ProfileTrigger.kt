@@ -1,6 +1,7 @@
 package com.rageh.profy.data.entity
 
 import androidx.annotation.IntDef
+import androidx.databinding.BaseObservable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -29,7 +30,7 @@ data class ProfileTrigger(
     val timeTo: Long? = null,
     @ColumnInfo(name = "weekDays")
     val weekDays: Byte = 0
-) {
+) : BaseObservable() {
     companion object {
         const val TRIGGER_TYPE_BLUETOOTH = 1
         const val TRIGGER_TYPE_WIFI = 2

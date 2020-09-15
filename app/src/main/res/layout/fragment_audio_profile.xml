@@ -21,7 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:padding="@dimen/default_screen_padding">
 
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/nameIL"
@@ -191,10 +191,9 @@
                     app:flow_verticalBias="0"
                     app:flow_verticalGap="12dp"
                     app:flow_verticalStyle="packed"
-                    tools:ignore="MissingConstraints">
+                    tools:ignore="MissingConstraints" />
 
 
-            </androidx.constraintlayout.helper.widget.Flow>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

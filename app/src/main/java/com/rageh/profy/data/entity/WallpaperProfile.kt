@@ -1,6 +1,7 @@
 package com.rageh.profy.data.entity
 
 import android.graphics.Rect
+import androidx.databinding.BaseObservable
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -21,4 +22,4 @@ data class WallpaperProfile(
     val lockFileUri: String,
     @Embedded(prefix = "lock_rect")
     val lockRect: Rect
-)
+) : BaseObservable()

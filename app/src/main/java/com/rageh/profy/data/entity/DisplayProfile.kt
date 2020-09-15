@@ -3,6 +3,7 @@ package com.rageh.profy.data.entity
 import android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
 import android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL
 import androidx.annotation.IntDef
+import androidx.databinding.BaseObservable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -23,7 +24,7 @@ data class DisplayProfile(
     val screenBrightness: Int,
     @ColumnInfo(name = "screen_off_timeout")
     val screenOffTimeout: Int
-) {
+) : BaseObservable() {
     @IntDef(
         SCREEN_BRIGHTNESS_MODE_MANUAL,
         SCREEN_BRIGHTNESS_MODE_AUTOMATIC

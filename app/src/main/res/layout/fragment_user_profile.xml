@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.rageh.profy.presentation.ui.profile.UserProfileViewModel" />
+
+        <variable
+                name="vm"
+                type="UserProfileViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            tools:context=".presentation.ui.profile.UserProfileFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_screen_padding">
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nameIL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nameET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/profile_name"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={vm.defaultProfile.name}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    android:id="@+id/audio_profiles_lbl_tv"
+                    style="@style/field_lbl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/audio_profile"
+                    tools:ignore="MissingConstraints" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/audioProfileSp"
+                    selectionItemId="@={vm.defaultProfile.audioProfileId}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:entries="@{vm.availableAudioProfiles}"
+                    tools:ignore="MissingConstraints" />
+
+            <ImageView
+                    android:id="@+id/addAudioProfileBt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/ic_add_48"
+                    tools:ignore="ContentDescription,MissingConstraints" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="audioProfileSp,addAudioProfileBt"
+                    app:flow_horizontalGap="12dp"
+                    app:flow_horizontalStyle="spread"
+                    tools:ignore="MissingConstraints" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:constraint_referenced_ids="nameIL,audio_profiles_lbl_tv,flow1"
+                    app:flow_horizontalAlign="start"
+                    app:flow_verticalBias="0"
+                    app:flow_verticalGap="12dp"
+                    app:flow_verticalStyle="packed"
+                    tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

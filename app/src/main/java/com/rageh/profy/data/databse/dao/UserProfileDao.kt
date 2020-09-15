@@ -25,6 +25,10 @@ interface UserProfileDao : BaseDao<UserProfile> {
     fun getFullProfile(profileId: Int): LiveData<FullUserProfile>
 
     @Transaction
+    @Query("SELECT * FROM user_profiles ORDER BY id ASC LIMIT 1")
+    fun getDefaultProfile(): LiveData<UserProfile>
+
+    @Transaction
     @Query("SELECT * FROM user_profiles")
     fun getAllFullProfiles(): LiveData<List<FullUserProfile>>
 }
