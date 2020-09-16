@@ -22,7 +22,7 @@ interface UserProfileDao : BaseDao<UserProfile> {
 
     @Transaction
     @Query("SELECT * FROM user_profiles where id=:profileId")
-    fun getFullProfile(profileId: Int): LiveData<FullUserProfile>
+    fun getFullProfile(profileId: Long): FullUserProfile?
 
     @Transaction
     @Query("SELECT * FROM user_profiles ORDER BY id ASC LIMIT 1")

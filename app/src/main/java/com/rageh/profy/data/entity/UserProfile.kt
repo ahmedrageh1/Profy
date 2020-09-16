@@ -9,5 +9,5 @@ data class UserProfile(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
     var name: String = "",
-    var audioProfileId: Long
+    var audioProfileId: Long = 0
 ) : BaseObservable()

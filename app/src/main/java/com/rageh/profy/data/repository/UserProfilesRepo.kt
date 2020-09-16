@@ -15,4 +15,6 @@ class UserProfilesRepo @Inject constructor(private val userProfileDao: UserProfi
         userProfileDao.getAllFullProfiles()
 
     fun getDefaultUserProfile() = userProfileDao.getDefaultProfile()
+
+    fun getFullUserProfile(profileId: Long) = userProfileDao.getFullProfile(profileId)
 }

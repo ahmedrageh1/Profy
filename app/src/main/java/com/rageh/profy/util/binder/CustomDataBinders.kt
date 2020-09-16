@@ -1,4 +1,4 @@
-package com.rageh.profy.util
+package com.rageh.profy.util.binder
 
 import android.widget.Spinner
 import androidx.databinding.BindingAdapter

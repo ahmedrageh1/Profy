@@ -23,7 +23,6 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".presentation.activity.MainActivity" />
 
         <receiver
                 android:name=".receiver.BluetoothDevicesStatusReceiver"
@@ -35,19 +34,6 @@
                 <action android:name="android.bluetooth.device.action.BOND_STATE_CHANGED" />
             </intent-filter>
         </receiver>
-
-        <activity android:name=".presentation.activity.ProfyUriHandlerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data
-                    android:host="profile"
-                    android:scheme="profy" />
-            </intent-filter>
-        </activity>
-
         <receiver
                 android:name=".receiver.GeofenceBroadcastReceiver"
                 android:enabled="true"
@@ -62,14 +48,26 @@
         </receiver>
 
         <activity
-            android:name=".presentation.activity.SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar.FullScreen">
+                android:name=".presentation.activity.SplashActivity"
+                android:theme="@style/AppTheme.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.ui.urlhandler.ProfyUriHandlerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                        android:host="profile"
+                        android:scheme="profy" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".presentation.activity.MainActivity" />
     </application>
 
 </manifest>
