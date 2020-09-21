@@ -27,6 +27,6 @@ class UserProfileViewModel @ViewModelInject constructor(
         }
     }
 
-    fun saveUserProfile() = repo.insertIntoDB(requireNotNull(defaultProfile.value))
+    fun saveUserProfile() = repo.insertLive(requireNotNull(defaultProfile.value))
 
 }

@@ -48,8 +48,8 @@
         </receiver>
 
         <activity
-                android:name=".presentation.activity.SplashActivity"
-                android:theme="@style/AppTheme.NoActionBar.FullScreen">
+                android:name=".presentation.ui.splash.SplashActivity"
+                android:theme="@style/AppTheme.NoActionBar.FullScreen.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

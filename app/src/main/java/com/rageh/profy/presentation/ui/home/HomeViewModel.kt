@@ -17,7 +17,7 @@ class HomeViewModel
     private fun loadUserProfiles() = userProfilesRepo.getAllUserProfiles()
 
     fun insertUserProfile(userProfile: UserProfile) =
-        userProfilesRepo.insertIntoDB(userProfile)
+        userProfilesRepo.insertLive(userProfile)
 
 
 }

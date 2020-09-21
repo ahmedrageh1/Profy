@@ -18,6 +18,11 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="AppTheme.NoActionBar.FullScreen.Splash" parent="AppTheme.NoActionBar.FullScreen">
+        <!-- It's important to set window background in styles instead xml layout and views to avoid white screen while waiting views creation -->
+        <item name="android:windowBackground">@drawable/splash_bg</item>
+    </style>
+
     <style name="field_lbl_tv">
         <item name="android:textSize">15sp</item>
     </style>

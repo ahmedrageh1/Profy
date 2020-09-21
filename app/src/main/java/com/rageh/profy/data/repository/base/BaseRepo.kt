@@ -8,15 +8,17 @@ import javax.inject.Inject
 
 open class BaseRepo<T> @Inject constructor(private val baseDao: BaseDao<T>) {
 
-    fun insertIntoDB(item: T) = liveData(Dispatchers.IO) { emit(baseDao.insert(item)) }
+    fun insert(item: T) = baseDao.insert(item)
 
-    suspend fun updateInDB(item: T) {
+    fun insertLive(item: T) = liveData(Dispatchers.IO) { emit(baseDao.insert(item)) }
+
+    suspend fun update(item: T) {
         withContext(Dispatchers.IO) {
             baseDao.update(item)
         }
     }
 
-    suspend fun deleteFromDB(item: T) {
+    suspend fun delete(item: T) {
         withContext(Dispatchers.IO) {
             baseDao.delete(item)
         }

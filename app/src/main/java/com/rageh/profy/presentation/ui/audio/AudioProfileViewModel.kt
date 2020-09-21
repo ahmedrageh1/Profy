@@ -21,6 +21,6 @@ class AudioProfileViewModel @ViewModelInject constructor(
         handler.getMaxLevelsProfile()
     }
 
-    fun saveAudioProfile() = repo.insertIntoDB(currentAudioProfile)
+    fun saveAudioProfile() = repo.insertLive(currentAudioProfile)
 
 }
