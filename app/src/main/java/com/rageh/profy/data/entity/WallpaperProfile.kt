@@ -6,6 +6,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.rageh.profy.data.entity.skeleton.IdentifiedItem
 
 /**
  * Created by Ahmed on 4/19/2020.
@@ -22,4 +23,6 @@ data class WallpaperProfile(
     val lockFileUri: String,
     @Embedded(prefix = "lock_rect")
     val lockRect: Rect
-) : BaseObservable()
+) : BaseObservable(), IdentifiedItem {
+    override fun getIdentifier() = id
+}

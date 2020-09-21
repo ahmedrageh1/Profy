@@ -3,7 +3,7 @@ package com.rageh.profy.util.binder
 import android.widget.Spinner
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
-import com.rageh.profy.data.entity.AudioProfile
+import com.rageh.profy.data.entity.skeleton.IdentifiedItem
 
 object CustomDataBinders {
 
@@ -14,13 +14,12 @@ object CustomDataBinders {
             for (i in 0..it.count) {
                 it.getItem(i).let { item ->
                     when (item) {
-                        is AudioProfile -> {
-                            if (itemId == item.id) {
+                        is IdentifiedItem -> {
+                            if (itemId == item.getIdentifier()) {
                                 view.setSelection(i, true)
                                 return
                             }
                         }
-                        //TODO add other used types
                     }
                 }
             }
@@ -37,10 +36,9 @@ object CustomDataBinders {
         view.adapter?.let {
             it.getItem(view.selectedItemPosition).let { item ->
                 return when (item) {
-                    is AudioProfile -> item.id
+                    is IdentifiedItem -> item.getIdentifier() as Long
                     else -> 0L
                 }
-                //TODO add other used types
             }
         }
         return 0

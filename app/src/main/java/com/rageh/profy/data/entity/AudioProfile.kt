@@ -6,6 +6,7 @@ import androidx.databinding.BaseObservable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.rageh.profy.data.entity.skeleton.IdentifiedItem
 
 /**
  * Created by Ahmed on 2/27/2019.
@@ -32,7 +33,7 @@ data class AudioProfile(
     @ColumnInfo(name = "notification_level")
     var notificationLevel: Int
 //TODO add delay seconds option 
-) : BaseObservable() {
+) : BaseObservable(), IdentifiedItem {
     @IntDef(
         AudioManager.RINGER_MODE_SILENT,
         AudioManager.RINGER_MODE_VIBRATE,
@@ -44,4 +45,6 @@ data class AudioProfile(
     override fun toString(): String {
         return name
     }
+
+    override fun getIdentifier() = id
 }
