@@ -10,5 +10,20 @@ data class FullUserProfile(
         parentColumn = "audioProfileId",
         entityColumn = "id"
     )
-    val audioProfile: AudioProfile? = null
+    val audioProfile: AudioProfile? = null,
+    @Relation(
+        parentColumn = "displayProfileId",
+        entityColumn = "id"
+    )
+    val displayProfile: DisplayProfile? = null,
+    @Relation(
+        parentColumn = "wallpaperProfileId",
+        entityColumn = "id"
+    )
+    val wallpaperProfile: WallpaperProfile? = null,
+    @Relation(
+        parentColumn = "triggerId",
+        entityColumn = "id"
+    )
+    val trigger: ProfileTrigger? = null
 ) : BaseObservable()
