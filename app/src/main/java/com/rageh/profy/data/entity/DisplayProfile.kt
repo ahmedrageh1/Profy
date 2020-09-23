@@ -17,7 +17,7 @@ import com.rageh.profy.data.entity.skeleton.IdentifiedItem
 )
 data class DisplayProfile(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0,
     @ColumnInfo(name = "name")
     var name: String = "",
     @ColumnInfo(name = "screen_brightness_mode")

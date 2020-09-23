@@ -14,7 +14,8 @@ import javax.inject.Singleton
 class UserProfileHandler @Inject constructor(
     private val userProfilesRepo: UserProfilesRepo,
     private val audioProfilesRepo: AudioProfilesRepo,
-    private val audioProfileHandler: AudioProfileHandler
+    private val audioProfileHandler: AudioProfileHandler,
+    private val displayProfileHandler: DisplayProfileHandler
 ) {
 
     suspend fun createAndInsertDefaultProfile() = withContext(Dispatchers.IO) {

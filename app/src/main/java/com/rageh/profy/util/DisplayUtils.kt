@@ -40,4 +40,8 @@ class DisplayUtils @Inject constructor(@ApplicationContext private val context: 
     @Throws(Settings.SettingNotFoundException::class)
     fun setScreenOffTimeout(timeout: Int) =
         Settings.System.putInt(contentResolver, Settings.System.SCREEN_OFF_TIMEOUT, timeout)
+
+    fun getMaxDisplayBrightness() = 255
+
+
 }
