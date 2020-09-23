@@ -14,8 +14,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:clipToPadding="false"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="4"
+            android:padding="12dp"
             tools:listitem="@layout/item_user_profile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
 
         <import type="com.rageh.profy.data.entity.FullUserProfile" />
 
@@ -20,22 +23,82 @@
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            app:cardElevation="2dp">
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="6dp"
+            app:cardUseCompatPadding="true">
 
-        <TextView
-                android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top|center_horizontal"
-                android:text='@{(profile.audioProfile != null &amp;&amp; profile.audioProfile.name !=null ) ? profile.audioProfile.name : "N/A" }' />
+                android:padding="@dimen/default_screen_padding">
 
 
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|bottom"
-                android:onClick="@{()->handler.activateProfile(profile)}"
-                android:text="Activate" />
+            <TextView
+                    android:id="@+id/audioProfileTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text='@{(profile.audioProfile != null &amp;&amp; profile.audioProfile.name !=null ) ? profile.audioProfile.name : "N/A" }'
+                    android:visibility="@{profile.audioProfile != null ? View.VISIBLE : View.GONE}"
+                    app:drawableTopCompat="@drawable/ic_music_note_64"
+                    tools:ignore="MissingConstraints"
+                    tools:text="Audio Profile" />
+
+            <TextView
+                    android:id="@+id/displayProfileTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text='@{profile.displayProfile ?? profile.displayProfile.name}'
+                    android:visibility="@{profile.displayProfile != null ? View.VISIBLE : View.GONE}"
+                    app:drawableTopCompat="@drawable/ic_mobile_screen_64"
+                    tools:ignore="MissingConstraints"
+                    tools:text="Display Profile" />
+
+            <TextView
+                    android:id="@+id/wallpaperProfileTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center"
+                    android:text='@{profile.wallpaperProfile ?? profile.wallpaperProfile.name}'
+                    android:visibility="@{profile.wallpaperProfile != null ? View.VISIBLE : View.GONE}"
+                    app:drawableTopCompat="@drawable/ic_wallpaper_64"
+                    tools:ignore="MissingConstraints"
+                    tools:text="Wallpaper Profile" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/profileContentF"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="audioProfileTV,displayProfileTV,wallpaperProfileTV"
+                    app:flow_horizontalGap="10dp"
+                    app:flow_horizontalStyle="spread_inside"
+                    app:flow_maxElementsWrap="3"
+                    app:flow_verticalGap="10dp"
+                    app:flow_verticalStyle="packed"
+                    app:layout_constraintBottom_toTopOf="@id/applyBt"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
+
+            <Button
+                    android:id="@+id/applyBt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{()->handler.activateProfile(profile)}"
+                    android:text="@string/apply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profileContentF"
+                    app:layout_constraintWidth_percent="0.7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>

@@ -37,13 +37,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         recyclerView.apply {
             adapter = this@HomeFragment.adapter
             setHasFixedSize(true)
-//            addItemDecoration(
-//                DividerItemDecoration(
-//                    requireContext(),
-//                    LinearLayoutManager.VERTICAL
-//                ).also {
-//                    ContextCompat.getDrawable(requireContext(), R.drawable.list_divider_4)
-//                })
         }
         viewModel.userProfiles.observe(viewLifecycleOwner, {
             adapter.submitList(it)

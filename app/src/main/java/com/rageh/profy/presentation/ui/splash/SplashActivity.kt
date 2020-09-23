@@ -30,7 +30,6 @@ class SplashActivity : BaseActivity() {
                 viewModel.defaultProfile.observe(this@SplashActivity, {
                     if (it == null) {
                         viewModel.initDefaultProfile()
-                            .observe(this@SplashActivity, { delayAndStart() })
                     } else {
                         delayAndStart()
                     }

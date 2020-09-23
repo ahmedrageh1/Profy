@@ -17,4 +17,5 @@
     <string name="normal">Normal</string>
     <string name="profile_name">Profile Name</string>
     <string name="audio_profile">Audio Profile</string>
+    <string name="apply">Apply</string>
 </resources>

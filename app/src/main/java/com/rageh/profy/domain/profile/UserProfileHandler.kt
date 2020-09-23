@@ -6,6 +6,7 @@ import com.rageh.profy.data.entity.UserProfile
 import com.rageh.profy.data.repository.AudioProfilesRepo
 import com.rageh.profy.data.repository.UserProfilesRepo
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -16,15 +17,13 @@ class UserProfileHandler @Inject constructor(
     private val audioProfileHandler: AudioProfileHandler
 ) {
 
-    fun createAndInsertDefaultProfile() = liveData(Dispatchers.IO) {
+    suspend fun createAndInsertDefaultProfile() = withContext(Dispatchers.IO) {
         //TODO titles to be replaces with string provider
-        val defaultProfile = UserProfile().apply {
+        userProfilesRepo.insert(UserProfile().apply {
             name = "Default"
             audioProfileId = audioProfilesRepo.insert(
                 audioProfileHandler.getCurrentProfile().apply { name = "Default" })
-        }
-        emit(userProfilesRepo.insert(defaultProfile))
-
+        })
     }
 
     fun activateProfile(profile: FullUserProfile) {

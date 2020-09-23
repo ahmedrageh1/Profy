@@ -15,6 +15,8 @@ import com.rageh.profy.data.entity.skeleton.IdentifiedItem
 data class WallpaperProfile(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
+    @ColumnInfo(name = "name")
+    var name: String = "",
     @ColumnInfo(name = "system_file_uri")
     val systemFileUri: String,
     @Embedded(prefix = "system_rect")
