@@ -5,24 +5,25 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import com.rageh.profy.data.entity.skeleton.IdentifiedItem
 
-object CustomDataBinders {
+object SpinnerDataBinders {
 
     @JvmStatic
     @BindingAdapter("selectionItemId")
     fun setSelectionItemId(view: Spinner, itemId: Long) {
         view.adapter?.let {
-            for (i in 0..it.count) {
-                it.getItem(i).let { item ->
-                    when (item) {
-                        is IdentifiedItem -> {
-                            if (itemId == item.getIdentifier()) {
-                                view.setSelection(i, true)
-                                return
+            if (it.count > 0)
+                for (i in 0..it.count) {
+                    it.getItem(i).let { item ->
+                        when (item) {
+                            is IdentifiedItem -> {
+                                if (itemId == item.getIdentifier()) {
+                                    view.setSelection(i, true)
+                                    return
+                                }
                             }
                         }
                     }
                 }
-            }
         }
 
     }

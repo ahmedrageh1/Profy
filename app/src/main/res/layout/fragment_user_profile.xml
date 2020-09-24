@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <import type="com.rageh.profy.presentation.ui.profile.UserProfileViewModel" />
 
         <variable
@@ -21,6 +23,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
                 android:padding="@dimen/default_screen_padding">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -39,12 +42,13 @@
                         android:text="@={vm.defaultProfile.name}" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                    android:id="@+id/audio_profiles_lbl_tv"
+            <CheckBox
+                    android:id="@+id/audioProfileC"
                     style="@style/field_lbl_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
+                    android:checked="@={vm.includeAudioProfile}"
                     android:text="@string/audio_profile"
                     tools:ignore="MissingConstraints" />
 
@@ -64,10 +68,37 @@
                     app:srcCompat="@drawable/ic_add_48"
                     tools:ignore="ContentDescription,MissingConstraints" />
 
+            <CheckBox
+                    android:id="@+id/displayProfileC"
+                    style="@style/field_lbl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:checked="@={vm.includeDisplayProfile}"
+                    android:text="@string/display_profile"
+                    tools:ignore="MissingConstraints" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/displayProfileSp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:entries="@{vm.availableDisplayProfiles}"
+                    app:selectionItemId="@={vm.defaultProfile.displayProfileId}"
+                    tools:ignore="MissingConstraints" />
+
+            <ImageView
+                    android:id="@+id/addDisplayProfileBt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/ic_add_48"
+                    tools:ignore="ContentDescription,MissingConstraints" />
+
             <androidx.constraintlayout.helper.widget.Flow
                     android:id="@+id/flow1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="@{vm.includeAudioProfile ? View.VISIBLE : View.GONE}"
                     app:constraint_referenced_ids="audioProfileSp,addAudioProfileBt"
                     app:flow_horizontalGap="12dp"
                     app:flow_horizontalStyle="spread"
@@ -75,10 +106,19 @@
 
             <androidx.constraintlayout.helper.widget.Flow
                     android:id="@+id/flow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{vm.includeDisplayProfile ? View.VISIBLE : View.GONE}"
+                    app:constraint_referenced_ids="displayProfileSp,addDisplayProfileBt"
+                    app:flow_horizontalGap="12dp"
+                    app:flow_horizontalStyle="spread"
+                    tools:ignore="MissingConstraints" />
+
+            <androidx.constraintlayout.helper.widget.Flow
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:constraint_referenced_ids="nameIL,audio_profiles_lbl_tv,flow1"
+                    app:constraint_referenced_ids="nameIL,audioProfileC,flow1,displayProfileC,flow2"
                     app:flow_horizontalAlign="start"
                     app:flow_verticalBias="0"
                     app:flow_verticalGap="12dp"

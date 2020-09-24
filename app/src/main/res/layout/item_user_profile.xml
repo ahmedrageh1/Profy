@@ -33,6 +33,16 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/default_screen_padding">
 
+            <TextView
+                    android:id="@+id/titleTV"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{profile.profile.name}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:text="Profile name" />
 
             <TextView
                     android:id="@+id/audioProfileTV"
@@ -70,6 +80,18 @@
                     tools:ignore="MissingConstraints"
                     tools:text="Wallpaper Profile" />
 
+            <Button
+                    android:id="@+id/applyBt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginTop="16dp"
+                    android:onClick="@{()->handler.activateProfile(profile)}"
+                    android:text="@string/apply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintWidth_percent="0.7"
+                    tools:ignore="MissingConstraints" />
+
             <androidx.constraintlayout.helper.widget.Flow
                     android:id="@+id/profileContentF"
                     android:layout_width="match_parent"
@@ -80,23 +102,16 @@
                     app:flow_maxElementsWrap="3"
                     app:flow_verticalGap="10dp"
                     app:flow_verticalStyle="packed"
-                    app:layout_constraintBottom_toTopOf="@id/applyBt"
-                    app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints" />
 
-            <Button
-                    android:id="@+id/applyBt"
-                    android:layout_width="0dp"
+            <androidx.constraintlayout.helper.widget.Flow
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:layout_marginTop="16dp"
-                    android:onClick="@{()->handler.activateProfile(profile)}"
-                    android:text="@string/apply"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/profileContentF"
-                    app:layout_constraintWidth_percent="0.7" />
+                    app:constraint_referenced_ids="titleTV,profileContentF,applyBt"
+                    app:flow_verticalGap="18dp"
+                    app:flow_verticalStyle="packed"
+                    app:flow_wrapMode="aligned"
+                    tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

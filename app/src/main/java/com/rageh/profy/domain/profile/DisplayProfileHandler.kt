@@ -17,8 +17,8 @@ class DisplayProfileHandler @Inject constructor(private val displayUtils: Displa
     }
 
     fun setCurrentProfile(displayProfile: DisplayProfile) = displayUtils.run {
-        setDisplayBrightnessMode(displayProfile.screenBrightnessMode)
         setDisplayBrightness(displayProfile.screenBrightness)
+        setDisplayBrightnessMode(displayProfile.screenBrightnessMode)
         setScreenOffTimeout(displayProfile.screenOffTimeout)
     }
 

@@ -21,13 +21,13 @@ class AudioProfileHandler @Inject constructor(private val audioUtils: AudioUtils
     }
 
     fun setCurrentProfile(audioProfile: AudioProfile) = audioUtils.run {
-        setRingerMode(audioProfile.ringerMode)
         setRingLevel(audioProfile.ringLevel)
         setCallLevel(audioProfile.callLevel)
         setMusicLevel(audioProfile.musicLevel)
         setSystemLevel(audioProfile.systemLevel)
         setAlarmLevel(audioProfile.alarmLevel)
         setNotificationLevel(audioProfile.notificationLevel)
+        setRingerMode(audioProfile.ringerMode)
     }
 
     fun getMaxLevelsProfile() = audioUtils.run {
