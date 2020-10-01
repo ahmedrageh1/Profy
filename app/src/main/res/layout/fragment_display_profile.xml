@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.rageh.profy.presentation.ui.display.DisplayProfileViewModel" />
+
+        <variable
+                name="vm"
+                type="DisplayProfileViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            tools:context=".presentation.ui.display.DisplayProfileFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:padding="@dimen/default_screen_padding">
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nameIL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nameET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/profile_name"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={vm.currentDisplayProfile.name}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                    android:id="@+id/autoBrightnessC"
+                    style="@style/field_lbl_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:checked="@={vm.autoBrightness}"
+                    android:text="@string/auto_brightness"
+                    tools:ignore="MissingConstraints" />
+
+            <CheckBox
+                    android:id="@+id/autoRotateC"
+                    style="@style/field_lbl_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:checked="@={vm.currentDisplayProfile.screenAutoRotation}"
+                    android:text="@string/auto_rotate"
+                    tools:ignore="MissingConstraints" />
+
+            <TextView
+                    android:id="@+id/brightness_level_lbl_tv"
+                    style="@style/field_lbl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/brightness_level"
+                    android:visibility="@{vm.autoBrightness ? View.GONE:View.VISIBLE}"
+                    tools:ignore="MissingConstraints" />
+
+            <SeekBar
+                    android:id="@+id/brightnessSB"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="8"
+                    android:progress="@={vm.currentDisplayProfile.discreteBrightnessLevel}"
+                    android:visibility="@{vm.autoBrightness ? View.GONE:View.VISIBLE}"
+                    tools:ignore="MissingConstraints"
+                    tools:progress="4" />
+
+            <TextView
+                    android:id="@+id/sleep_level_lbl_tv"
+                    style="@style/field_lbl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/sleep_after"
+                    tools:ignore="MissingConstraints" />
+
+            <SeekBar
+                    android:id="@+id/sleepSB"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="@{vm.screenTimeoutValues.size()-1}"
+                    android:progress="@={vm.screenTimeoutIndex}"
+                    tools:ignore="MissingConstraints"
+                    tools:max="6"
+                    tools:progress="4" />
+
+            <TextView
+                    android:id="@+id/sleep_level_value_tv"
+                    style="@style/field_lbl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@{@stringArray/screen_timeout_labels[vm.screenTimeoutIndex]}"
+                    tools:ignore="MissingConstraints"
+                    tools:text="10 Min" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="autoBrightnessC,autoRotateC"
+                    app:flow_horizontalGap="12dp"
+                    app:flow_horizontalStyle="spread_inside"
+                    tools:ignore="MissingConstraints" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="sleep_level_lbl_tv,sleep_level_value_tv"
+                    app:flow_horizontalStyle="spread_inside"
+                    tools:ignore="MissingConstraints" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:constraint_referenced_ids="nameIL,flow1,brightness_level_lbl_tv,brightnessSB,flow2,sleepSB"
+                    app:flow_horizontalAlign="start"
+                    app:flow_verticalBias="0"
+                    app:flow_verticalGap="12dp"
+                    app:flow_verticalStyle="packed"
+                    tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

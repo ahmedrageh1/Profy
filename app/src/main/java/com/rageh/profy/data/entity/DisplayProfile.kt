@@ -1,13 +1,12 @@
 package com.rageh.profy.data.entity
 
-import android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
-import android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL
-import androidx.annotation.IntDef
+import androidx.annotation.IntRange
 import androidx.databinding.BaseObservable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.rageh.profy.data.entity.skeleton.IdentifiedItem
+import kotlin.math.log2
 
 /**
  * Created by Ahmed on 2/27/2019.
@@ -20,21 +19,23 @@ data class DisplayProfile(
     val id: Long = 0,
     @ColumnInfo(name = "name")
     var name: String = "",
-    @ColumnInfo(name = "screen_brightness_mode")
-    @ScreenBrightnessMode
-    val screenBrightnessMode: Int,
+    @ColumnInfo(name = "screen_auto_brightness")
+    var screenAutoBrightness: Boolean,
     @ColumnInfo(name = "screen_brightness")
-    val screenBrightness: Int,
+    var screenBrightness: Int,
     @ColumnInfo(name = "screen_off_timeout")
-    val screenOffTimeout: Int
+    var screenOffTimeout: Int,
+    @ColumnInfo(name = "screen_auto_rotation")
+    var screenAutoRotation: Boolean
 ) : BaseObservable(), IdentifiedItem {
 
-    override fun getIdentifier() = id
+    fun getDiscreteBrightnessLevel() = log2(screenBrightness - 19.0).toInt()
+    fun setDiscreteBrightnessLevel(@IntRange(from = 0L, to = 8L) discreteLevel: Int): Int {
+        val value = Math.pow(2.0, discreteLevel.toDouble()).toInt() + 19
+        return if (value > 255)
+            255
+        else value
+    }
 
-    @IntDef(
-        SCREEN_BRIGHTNESS_MODE_MANUAL,
-        SCREEN_BRIGHTNESS_MODE_AUTOMATIC
-    )
-    @Retention(AnnotationRetention.SOURCE)
-    annotation class ScreenBrightnessMode
+    override fun getIdentifier() = id
 }

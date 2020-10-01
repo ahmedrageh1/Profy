@@ -12,14 +12,21 @@
             tools:layout="@layout/fragment_home" />
 
     <fragment
+            android:id="@+id/userProfileFragment"
+            android:name="com.rageh.profy.presentation.ui.profile.UserProfileFragment"
+            android:label="fragment_user_profile"
+            tools:layout="@layout/fragment_user_profile" />
+
+    <fragment
             android:id="@+id/audioProfileFragment"
             android:name="com.rageh.profy.presentation.ui.audio.AudioProfileFragment"
             android:label="fragment_audio"
             tools:layout="@layout/fragment_audio_profile" />
 
     <fragment
-            android:id="@+id/userProfileFragment"
-            android:name="com.rageh.profy.presentation.ui.profile.UserProfileFragment"
-            android:label="fragment_user_profile"
-            tools:layout="@layout/fragment_user_profile" />
+            android:id="@+id/displayProfileFragment"
+            android:name="com.rageh.profy.presentation.ui.display.DisplayProfileFragment"
+            android:label="fragment_display"
+            tools:layout="@layout/fragment_display_profile" />
+
 </navigation>

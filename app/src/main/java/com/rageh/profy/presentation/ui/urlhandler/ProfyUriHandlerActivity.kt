@@ -26,7 +26,7 @@ class ProfyUriHandlerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profy_uri_handler)
         intent.dataString?.let {
             Log.d("Intent Data=", it)
-            handler.activateProfile(it).observe(this, {
+            handler.applyProfile(it).observe(this, {
                 if (it) Toast.makeText(this, "Profile Activated", Toast.LENGTH_SHORT).show()
             })
         }

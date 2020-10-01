@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
                     android:layout_marginTop="16dp"
-                    android:onClick="@{()->handler.activateProfile(profile)}"
+                    android:onClick="@{()->handler.applyProfile(profile)}"
                     android:text="@string/apply"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintWidth_percent="0.7"

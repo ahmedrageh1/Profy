@@ -1,4 +1,4 @@
-package com.rageh.profy.presentation.ui.profile
+package com.rageh.profy.presentation.ui.display
 
 import android.os.Bundle
 import android.util.Log
@@ -6,16 +6,15 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import com.rageh.profy.R
-import com.rageh.profy.databinding.FragmentUserProfileBinding
+import com.rageh.profy.databinding.FragmentDisplayProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_user_profile.*
 
 @AndroidEntryPoint
-class UserProfileFragment : Fragment() {
+class DisplayProfileFragment : Fragment() {
 
-    private val viewModel: UserProfileViewModel by viewModels()
+    private val viewModel: DisplayProfileViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +22,13 @@ class UserProfileFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return DataBindingUtil.inflate<FragmentUserProfileBinding>(
+        return DataBindingUtil.inflate<FragmentDisplayProfileBinding>(
             inflater,
-            R.layout.fragment_user_profile,
+            R.layout.fragment_display_profile,
             container,
             false
         ).apply {
@@ -38,15 +37,6 @@ class UserProfileFragment : Fragment() {
         }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        addAudioProfileBt.setOnClickListener {
-            view.findNavController().navigate(R.id.audioProfileFragment)
-        }
-        addDisplayProfileBt.setOnClickListener {
-            view.findNavController().navigate(R.id.displayProfileFragment)
-        }
-    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -56,7 +46,7 @@ class UserProfileFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.item_save -> {
-                viewModel.saveUserProfile().observe(viewLifecycleOwner, {
+                viewModel.saveDisplayProfile().observe(viewLifecycleOwner, {
                     Log.d("success", it.toString())
                 })
                 true
@@ -65,6 +55,5 @@ class UserProfileFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 
 }

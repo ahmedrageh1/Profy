@@ -27,19 +27,23 @@ class UserProfileHandler @Inject constructor(
         })
     }
 
-    fun activateProfile(profile: FullUserProfile) {
+    fun applyProfile(profile: FullUserProfile) {
         profile.audioProfile?.let {
-            audioProfileHandler.setCurrentProfile(it)
+            audioProfileHandler.applyProfile(it)
+        }
+
+        profile.displayProfile?.let {
+            displayProfileHandler.applyProfile(it)
         }
     }
 
-    fun activateProfile(profileUrl: String) = liveData<Boolean>(Dispatchers.IO) {
+    fun applyProfile(profileUrl: String) = liveData(Dispatchers.IO) {
         try {
             val profileId =
                 profileUrl.substring(profileUrl.lastIndexOf('/') + 1, profileUrl.length).toLong()
             val profile = userProfilesRepo.getFullUserProfile(profileId)
             profile?.let {
-                activateProfile(it)
+                applyProfile(it)
                 emit(true)
             }
         } catch (e: Exception) {

@@ -19,4 +19,16 @@
     <string name="audio_profile">Audio Profile</string>
     <string name="apply">Apply</string>
     <string name="display_profile">Display Profile</string>
+    <string name="time_10sec">10 Sec</string>
+    <string name="time_30sec">30 Sec</string>
+    <string name="time_1min">1 Min</string>
+    <string name="time_2min">2 Min</string>
+    <string name="time_5min">5 Min</string>
+    <string name="time_10min">10 Min</string>
+    <string name="time_never">Never</string>
+    <string name="auto_brightness">Auto Brightness</string>
+    <string name="auto_rotate">Auto Rotate</string>
+    <string name="brightness">Brightness</string>
+    <string name="brightness_level">Brightness Level</string>
+    <string name="sleep_after">Sleep After</string>
 </resources>

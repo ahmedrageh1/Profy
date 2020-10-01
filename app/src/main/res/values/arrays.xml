@@ -6,4 +6,16 @@
         <item>@string/vibration_only</item>
         <item>@string/normal</item>
     </string-array>
+
+    <string-array name="screen_timeout_labels">
+        <item>@string/time_10sec</item>
+        <item>@string/time_30sec</item>
+        <item>@string/time_1min</item>
+        <item>@string/time_2min</item>
+        <item>@string/time_5min</item>
+        <item>@string/time_10min</item>
+        <item>@string/time_never</item>
+    </string-array>
+
+
 </resources>
