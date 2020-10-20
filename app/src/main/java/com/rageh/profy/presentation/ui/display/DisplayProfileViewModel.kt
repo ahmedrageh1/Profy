@@ -3,14 +3,12 @@ package com.rageh.profy.presentation.ui.display
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rageh.profy.data.repository.DisplayProfilesRepo
 import com.rageh.profy.domain.profile.DisplayProfileHandler
 import dagger.hilt.android.scopes.FragmentScoped
 
 @FragmentScoped
 class DisplayProfileViewModel @ViewModelInject constructor(
-    private val handler: DisplayProfileHandler,
-    private val repo: DisplayProfilesRepo
+    private val handler: DisplayProfileHandler
 ) :
     ViewModel() {
 
@@ -46,6 +44,6 @@ class DisplayProfileViewModel @ViewModelInject constructor(
         }
     }
 
-    fun saveDisplayProfile() = repo.insertLive(currentDisplayProfile)
+    fun saveDisplayProfile() = handler.insert(currentDisplayProfile)
 
 }

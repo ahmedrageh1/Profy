@@ -21,4 +21,9 @@ class DisplayProfileHandler @Inject constructor(
         setAutoRotationEnabled(displayProfile.screenAutoRotation)
     }
 
+    fun getAllDisplayProfiles() = repo.getAllDisplayProfiles()
+
+    fun insert(displayProfile: DisplayProfile) = repo.insertLive(displayProfile)
+
+
 }

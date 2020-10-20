@@ -27,6 +27,11 @@ class UserProfileHandler @Inject constructor(
         })
     }
 
+    fun loadUserProfiles() = userProfilesRepo.getAllUserProfiles()
+
+    fun insertUserProfile(userProfile: UserProfile) =
+        userProfilesRepo.insertLive(userProfile)
+
     fun applyProfile(profile: FullUserProfile) {
         profile.audioProfile?.let {
             audioProfileHandler.applyProfile(it)
@@ -52,4 +57,6 @@ class UserProfileHandler @Inject constructor(
         }
         emit(false)
     }
+
+    fun getDefaultUserProfile() = userProfilesRepo.getDefaultUserProfile()
 }

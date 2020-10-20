@@ -5,31 +5,31 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
-import com.rageh.profy.data.repository.AudioProfilesRepo
-import com.rageh.profy.data.repository.DisplayProfilesRepo
-import com.rageh.profy.data.repository.UserProfilesRepo
+import com.rageh.profy.domain.profile.AudioProfileHandler
+import com.rageh.profy.domain.profile.DisplayProfileHandler
+import com.rageh.profy.domain.profile.UserProfileHandler
 import dagger.hilt.android.scopes.FragmentScoped
 
 @FragmentScoped
 class UserProfileViewModel @ViewModelInject constructor(
-    private val audioProfilesRepo: AudioProfilesRepo,
-    private val displayProfilesRepo: DisplayProfilesRepo,
-    private val repo: UserProfilesRepo
+    private val audioProfilesHandler: AudioProfileHandler,
+    private val displayProfilesHandler: DisplayProfileHandler,
+    private val userProfileHandler: UserProfileHandler
 ) :
     ViewModel() {
     var includeAudioProfile = MutableLiveData(false)
     var includeDisplayProfile = MutableLiveData(false)
 
     val availableAudioProfiles by lazy {
-        audioProfilesRepo.getAllAudioProfiles()
+        audioProfilesHandler.getAllAudioProfiles()
     }
 
     val availableDisplayProfiles by lazy {
-        displayProfilesRepo.getAllDisplayProfiles()
+        displayProfilesHandler.getAllDisplayProfiles()
     }
 
     val defaultProfile by lazy {
-        repo.getDefaultUserProfile().map {
+        userProfileHandler.getDefaultUserProfile().map {
             it.apply {
                 id = 0
                 name = ""
@@ -46,7 +46,7 @@ class UserProfileViewModel @ViewModelInject constructor(
                 if (!it) displayProfileId = 0
             }
         }
-        return repo.insertLive(requireNotNull(defaultProfile.value))
+        return userProfileHandler.insertUserProfile(requireNotNull(defaultProfile.value))
     }
 
 

@@ -10,20 +10,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.rageh.profy.R
-import com.rageh.profy.domain.profile.UserProfileHandler
 import com.rageh.profy.presentation.adapter.UserProfilesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
-    @Inject
-    lateinit var profileHandler: UserProfileHandler
 
     private val viewModel: HomeViewModel by viewModels()
     private val adapter: UserProfilesAdapter by lazy {
-        UserProfilesAdapter(profileHandler)
+        UserProfilesAdapter(viewModel)
     }
 
     @SuppressLint("NewApi")

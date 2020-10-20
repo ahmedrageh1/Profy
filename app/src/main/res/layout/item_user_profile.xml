@@ -10,15 +10,15 @@
 
         <import type="com.rageh.profy.data.entity.FullUserProfile" />
 
-        <import type="com.rageh.profy.domain.profile.UserProfileHandler" />
+        <import type="com.rageh.profy.presentation.ui.home.HomeViewModel" />
 
         <variable
                 name="profile"
                 type="FullUserProfile" />
 
         <variable
-                name="handler"
-                type="UserProfileHandler" />
+                name="viewModel"
+                type="HomeViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
                     android:layout_marginTop="16dp"
-                    android:onClick="@{()->handler.applyProfile(profile)}"
+                    android:onClick="@{()->viewModel.applyProfile(profile)}"
                     android:text="@string/apply"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintWidth_percent="0.7"

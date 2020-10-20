@@ -18,6 +18,7 @@ import javax.inject.Inject
 */
 @AndroidEntryPoint
 class ProfyUriHandlerActivity : AppCompatActivity() {
+    //TODO to be replaced with view model (clean code structure)
     @Inject
     lateinit var handler: UserProfileHandler
 

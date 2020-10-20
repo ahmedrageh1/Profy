@@ -1,12 +1,16 @@
 package com.rageh.profy.domain.profile
 
 import com.rageh.profy.data.entity.AudioProfile
+import com.rageh.profy.data.repository.AudioProfilesRepo
 import com.rageh.profy.util.AudioUtils
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AudioProfileHandler @Inject constructor(private val audioUtils: AudioUtils) {
+class AudioProfileHandler @Inject constructor(
+    private val repo: AudioProfilesRepo,
+    private val audioUtils: AudioUtils
+) {
 
     fun getCurrentProfile() = audioUtils.run {
         AudioProfile(
@@ -41,4 +45,8 @@ class AudioProfileHandler @Inject constructor(private val audioUtils: AudioUtils
             notificationLevel = getMaxNotificationLevel()
         )
     }
+
+    fun insert(audioProfile: AudioProfile) = repo.insertLive(audioProfile)
+
+    fun getAllAudioProfiles() = repo.getAllAudioProfiles()
 }
