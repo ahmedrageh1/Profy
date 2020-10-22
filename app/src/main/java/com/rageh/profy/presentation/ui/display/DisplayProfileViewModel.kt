@@ -44,6 +44,9 @@ class DisplayProfileViewModel @ViewModelInject constructor(
         }
     }
 
-    fun saveDisplayProfile() = handler.insert(currentDisplayProfile)
+    fun saveDisplayProfile() = handler.insert(currentDisplayProfile.apply {
+        screenAutoBrightness = requireNotNull(autoBrightness.value)
+        screenOffTimeout = screenTimeoutValues[requireNotNull(screenTimeoutIndex.value)]
+    })
 
 }

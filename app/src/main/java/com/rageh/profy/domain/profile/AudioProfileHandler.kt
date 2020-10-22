@@ -1,5 +1,6 @@
 package com.rageh.profy.domain.profile
 
+import android.media.AudioManager
 import com.rageh.profy.data.entity.AudioProfile
 import com.rageh.profy.data.repository.AudioProfilesRepo
 import com.rageh.profy.util.AudioUtils
@@ -25,13 +26,15 @@ class AudioProfileHandler @Inject constructor(
     }
 
     fun applyProfile(audioProfile: AudioProfile) = audioUtils.run {
-        setRingLevel(audioProfile.ringLevel)
-        setCallLevel(audioProfile.callLevel)
-        setMusicLevel(audioProfile.musicLevel)
-        setSystemLevel(audioProfile.systemLevel)
-        setAlarmLevel(audioProfile.alarmLevel)
-        setNotificationLevel(audioProfile.notificationLevel)
         setRingerMode(audioProfile.ringerMode)
+        setCallLevel(audioProfile.callLevel)
+        setAlarmLevel(audioProfile.alarmLevel)
+        if (audioProfile.ringerMode == AudioManager.RINGER_MODE_NORMAL) {
+            setRingLevel(audioProfile.ringLevel)
+            setMusicLevel(audioProfile.musicLevel)
+            setSystemLevel(audioProfile.systemLevel)
+            setNotificationLevel(audioProfile.notificationLevel)
+        }
     }
 
     fun getMaxLevelsProfile() = audioUtils.run {

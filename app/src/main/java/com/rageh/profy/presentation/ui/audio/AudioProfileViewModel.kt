@@ -1,6 +1,7 @@
 package com.rageh.profy.presentation.ui.audio
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rageh.profy.domain.profile.AudioProfileHandler
 import dagger.hilt.android.scopes.FragmentScoped
@@ -19,6 +20,10 @@ class AudioProfileViewModel @ViewModelInject constructor(
         handler.getMaxLevelsProfile()
     }
 
-    fun saveAudioProfile() = handler.insert(currentAudioProfile)
+    val liveRingerMode = MutableLiveData(currentAudioProfile.ringerMode)
+
+    fun saveAudioProfile() = handler.insert(currentAudioProfile.apply {
+        ringerMode = requireNotNull(liveRingerMode.value)
+    })
 
 }

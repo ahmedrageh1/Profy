@@ -7,6 +7,10 @@
 
         <import type="com.rageh.profy.presentation.ui.audio.AudioProfileViewModel" />
 
+        <import type="android.media.AudioManager" />
+
+        <import type="android.view.View" />
+
         <variable
                 name="vm"
                 type="AudioProfileViewModel" />
@@ -54,7 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/ring_modes"
-                    android:selectedItemPosition="@={vm.currentAudioProfile.ringerMode}"
+                    android:selectedItemPosition="@={vm.liveRingerMode}"
                     tools:ignore="MissingConstraints" />
 
             <TextView
@@ -64,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:text="@string/ring_level"
+                    android:visibility="@{vm.liveRingerMode == AudioManager.RINGER_MODE_NORMAL ? View.VISIBLE:View.GONE}"
                     tools:ignore="MissingConstraints" />
 
             <SeekBar
@@ -73,6 +78,7 @@
                     android:layout_height="wrap_content"
                     android:max="@{vm.maxLevelProfile.ringLevel}"
                     android:progress="@={vm.currentAudioProfile.ringLevel}"
+                    android:visibility="@{vm.liveRingerMode == AudioManager.RINGER_MODE_NORMAL ? View.VISIBLE:View.GONE}"
                     tools:ignore="MissingConstraints"
                     tools:max="10"
                     tools:progress="4" />
@@ -104,6 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:text="@string/music_level"
+                    android:visibility="@{vm.liveRingerMode == AudioManager.RINGER_MODE_NORMAL ? View.VISIBLE:View.GONE}"
                     tools:ignore="MissingConstraints" />
 
             <SeekBar
@@ -113,6 +120,7 @@
                     android:layout_height="wrap_content"
                     android:max="@{vm.maxLevelProfile.musicLevel}"
                     android:progress="@={vm.currentAudioProfile.musicLevel}"
+                    android:visibility="@{vm.liveRingerMode == AudioManager.RINGER_MODE_NORMAL ? View.VISIBLE:View.GONE}"
                     tools:ignore="MissingConstraints"
                     tools:max="10"
                     tools:progress="3" />
@@ -124,6 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:text="@string/system_level"
+                    android:visibility="@{vm.liveRingerMode == AudioManager.RINGER_MODE_NORMAL ? View.VISIBLE:View.GONE}"
                     tools:ignore="MissingConstraints" />
 
             <SeekBar
@@ -133,6 +142,7 @@
                     android:layout_height="wrap_content"
                     android:max="@{vm.maxLevelProfile.systemLevel}"
                     android:progress="@={vm.currentAudioProfile.systemLevel}"
+                    android:visibility="@{vm.liveRingerMode == AudioManager.RINGER_MODE_NORMAL ? View.VISIBLE:View.GONE}"
                     tools:ignore="MissingConstraints"
                     tools:max="10"
                     tools:progress="4" />
@@ -164,6 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:text="@string/notification_level"
+                    android:visibility="@{vm.liveRingerMode == AudioManager.RINGER_MODE_NORMAL ? View.VISIBLE:View.GONE}"
                     tools:ignore="MissingConstraints" />
 
             <SeekBar
@@ -173,6 +184,7 @@
                     android:layout_height="wrap_content"
                     android:max="@{vm.maxLevelProfile.notificationLevel}"
                     android:progress="@={vm.currentAudioProfile.notificationLevel}"
+                    android:visibility="@{vm.liveRingerMode == AudioManager.RINGER_MODE_NORMAL ? View.VISIBLE:View.GONE}"
                     tools:ignore="MissingConstraints"
                     tools:max="10"
                     tools:progress="6" />
@@ -184,17 +196,15 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     app:constraint_referenced_ids="nameIL,
-                ring_mode_lbl_tv,ringModeSp,ring_level_lbl_tv,ringLevelSB,
-                call_level_lbl_tv,callLevelSB,music_level_lbl_tv,musicLevelSB,
-                system_level_lbl_tv,systemLevelSB,alarm_level_lbl_tv,alarmLevelSB,
+                ring_mode_lbl_tv,ringModeSp,alarm_level_lbl_tv,alarmLevelSB,
+                call_level_lbl_tv,callLevelSB,ring_level_lbl_tv,ringLevelSB,
+                music_level_lbl_tv,musicLevelSB,system_level_lbl_tv,systemLevelSB,
                 notification_level_lbl_tv,notificationLevelSB"
                     app:flow_horizontalAlign="start"
                     app:flow_verticalBias="0"
                     app:flow_verticalGap="12dp"
                     app:flow_verticalStyle="packed"
                     tools:ignore="MissingConstraints" />
-
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

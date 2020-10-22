@@ -30,11 +30,15 @@ data class DisplayProfile(
 ) : BaseObservable(), IdentifiedItem {
 
     fun getDiscreteBrightnessLevel() = log2(screenBrightness - 19.0).toInt()
-    fun setDiscreteBrightnessLevel(@IntRange(from = 0L, to = 8L) discreteLevel: Int): Int {
+    fun setDiscreteBrightnessLevel(@IntRange(from = 0L, to = 8L) discreteLevel: Int) {
         val value = Math.pow(2.0, discreteLevel.toDouble()).toInt() + 19
-        return if (value > 255)
+        screenBrightness = if (value > 255)
             255
         else value
+    }
+
+    override fun toString(): String {
+        return name
     }
 
     override fun getIdentifier() = id

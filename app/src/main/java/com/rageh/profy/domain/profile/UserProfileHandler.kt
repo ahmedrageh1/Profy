@@ -3,6 +3,7 @@ package com.rageh.profy.domain.profile
 import androidx.lifecycle.liveData
 import com.rageh.profy.data.entity.FullUserProfile
 import com.rageh.profy.data.entity.UserProfile
+import com.rageh.profy.data.event.feedback.GenericOperationFeedback
 import com.rageh.profy.data.repository.AudioProfilesRepo
 import com.rageh.profy.data.repository.UserProfilesRepo
 import kotlinx.coroutines.Dispatchers
@@ -32,13 +33,19 @@ class UserProfileHandler @Inject constructor(
     fun insertUserProfile(userProfile: UserProfile) =
         userProfilesRepo.insertLive(userProfile)
 
-    fun applyProfile(profile: FullUserProfile) {
-        profile.audioProfile?.let {
-            audioProfileHandler.applyProfile(it)
-        }
+    fun applyProfile(profile: FullUserProfile) = liveData(Dispatchers.IO) {
+        try {
+            profile.audioProfile?.let {
+                audioProfileHandler.applyProfile(it)
+            }
 
-        profile.displayProfile?.let {
-            displayProfileHandler.applyProfile(it)
+            profile.displayProfile?.let {
+                displayProfileHandler.applyProfile(it)
+            }
+            emit(GenericOperationFeedback(true))
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emit(GenericOperationFeedback(false, e))
         }
     }
 
@@ -55,7 +62,6 @@ class UserProfileHandler @Inject constructor(
             e.printStackTrace()
             emit(false)
         }
-        emit(false)
     }
 
     fun getDefaultUserProfile() = userProfilesRepo.getDefaultUserProfile()

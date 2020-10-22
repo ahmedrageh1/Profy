@@ -26,5 +26,10 @@ data class WallpaperProfile(
     @Embedded(prefix = "lock_rect")
     val lockRect: Rect
 ) : BaseObservable(), IdentifiedItem {
+
+    override fun toString(): String {
+        return name
+    }
+
     override fun getIdentifier() = id
 }
