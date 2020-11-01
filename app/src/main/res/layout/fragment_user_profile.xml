@@ -7,6 +7,8 @@
 
         <import type="android.view.View" />
 
+        <import type="com.rageh.profy.util.binder.EditTextValidator" />
+
         <import type="com.rageh.profy.presentation.ui.profile.UserProfileViewModel" />
 
         <variable
@@ -30,6 +32,8 @@
                     android:id="@+id/nameIL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:editTextValidationErrorMessage="@{@string/err_invalid_profile_name}"
+                    app:editTextValidationType="@{EditTextValidator.TYPE_FULL_NAME}"
                     tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText

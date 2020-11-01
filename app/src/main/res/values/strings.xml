@@ -31,4 +31,5 @@
     <string name="brightness">Brightness</string>
     <string name="brightness_level">Brightness Level</string>
     <string name="sleep_after">Sleep After</string>
+    <string name="err_invalid_profile_name">Invalid profile name!</string>
 </resources>

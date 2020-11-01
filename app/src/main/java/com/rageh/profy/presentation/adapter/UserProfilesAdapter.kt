@@ -1,6 +1,7 @@
 package com.rageh.profy.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
+import com.rageh.profy.BR
 import com.rageh.profy.R
 import com.rageh.profy.data.entity.FullUserProfile
 import com.rageh.profy.databinding.ItemUserProfileBinding
@@ -22,8 +23,9 @@ class UserProfilesAdapter constructor(val viewModel: HomeViewModel?) :
     override fun getItemLayout(viewType: Int) = R.layout.item_user_profile
 
     override fun onBindViewHolder(holder: ViewHolder<ItemUserProfileBinding>, position: Int) {
-        holder.viewBinding.profile = getItem(position)
-        holder.viewBinding.viewModel = viewModel
+        holder.viewBinding.setVariable(BR.profile, getItem(position))
+        holder.viewBinding.setVariable(BR.viewModel, viewModel)
+        holder.viewBinding.executePendingBindings()
     }
 
 }
