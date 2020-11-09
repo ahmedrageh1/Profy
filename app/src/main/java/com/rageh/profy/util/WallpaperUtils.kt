@@ -13,17 +13,18 @@ import javax.inject.Singleton
 @Singleton
 class WallpaperUtils @Inject constructor(@ApplicationContext private val context: Context) {
 
-    fun setWallpaper(someBitmap: Bitmap) {
-        val wallpaperManager = WallpaperManager.getInstance(context)
-        wallpaperManager.setBitmap(someBitmap)
+    private val wpm: WallpaperManager by lazy {
+        WallpaperManager.getInstance(context)
     }
 
+    fun setWallpaper(someBitmap: Bitmap) =
+        wpm.setBitmap(someBitmap)
+
     fun setWallpaper(someBitmapInputStream: InputStream, visibleCropHint: Rect, which: Int) {
-        val wallpaperManager = WallpaperManager.getInstance(context)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            wallpaperManager.setStream(someBitmapInputStream, visibleCropHint, false, which)
+            wpm.setStream(someBitmapInputStream, visibleCropHint, false, which)
         } else {
-            wallpaperManager.setStream(someBitmapInputStream)
+            wpm.setStream(someBitmapInputStream)
         }
     }
 
