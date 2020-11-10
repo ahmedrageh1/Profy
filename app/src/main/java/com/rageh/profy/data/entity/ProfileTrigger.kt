@@ -6,6 +6,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.rageh.profy.data.entity.skeleton.IdentifiedItem
+import java.util.*
 
 
 @Entity(tableName = "profile_triggers")
@@ -26,11 +27,13 @@ data class ProfileTrigger(
     @ColumnInfo(name = "range")
     val range: Float? = null,
     @ColumnInfo(name = "time_from")
-    val timeFrom: Long? = null,
+    val timeFrom: Date? = null,
     @ColumnInfo(name = "time_to")
-    val timeTo: Long? = null,
+    val timeTo: Date? = null,
     @ColumnInfo(name = "weekDays")
-    val weekDays: Byte = 0
+    val weekDays: Byte = 0, //7 bits for 7 week days (max value 127)
+    @ColumnInfo(name = "repeat_weekly")
+    val repeatWeekly: Boolean
 ) : BaseObservable(), IdentifiedItem {
 
     override fun getIdentifier() = id

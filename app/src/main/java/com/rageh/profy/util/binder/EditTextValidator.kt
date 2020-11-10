@@ -22,7 +22,7 @@ object EditTextValidator {
     @JvmStatic
     @BindingAdapter("editTextValidationType", "editTextValidationErrorMessage")
     fun setValidationType(editText: EditText, validationType: Int, errorMessage: String) {
-        val pattern = when (validationType) {
+        val typePattern = when (validationType) {
             TYPE_NAME -> VALIDATION_PATTERN_NAME
             TYPE_FULL_NAME -> VALIDATION_PATTERN_FULL_NAME
             TYPE_PHONE -> VALIDATION_PATTERN_PHONE
@@ -31,7 +31,7 @@ object EditTextValidator {
             else -> null
         }
 
-        pattern?.let { pattern ->
+        typePattern?.let { pattern ->
             editText.doAfterTextChanged { text ->
                 text?.let {
                     if (!it.matches(pattern.toRegex())) {
@@ -49,7 +49,7 @@ object EditTextValidator {
     @JvmStatic
     @BindingAdapter("editTextValidationType", "editTextValidationErrorMessage")
     fun setValidationType(inputLayout: TextInputLayout, validationType: Int, errorMessage: String) {
-        val pattern = when (validationType) {
+        val typePattern = when (validationType) {
             TYPE_NAME -> VALIDATION_PATTERN_NAME
             TYPE_FULL_NAME -> VALIDATION_PATTERN_FULL_NAME
             TYPE_PHONE -> VALIDATION_PATTERN_PHONE
@@ -58,7 +58,7 @@ object EditTextValidator {
             else -> null
         }
 
-        pattern?.let { pattern ->
+        typePattern?.let { pattern ->
             inputLayout.editText?.doAfterTextChanged { text ->
                 text?.let {
                     if (!it.matches(pattern.toRegex())) {

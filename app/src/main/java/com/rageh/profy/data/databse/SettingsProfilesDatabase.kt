@@ -2,6 +2,8 @@ package com.rageh.profy.data.databse
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.rageh.profy.data.databse.converter.DateTime
 import com.rageh.profy.data.databse.dao.*
 import com.rageh.profy.data.entity.*
 
@@ -14,6 +16,7 @@ import com.rageh.profy.data.entity.*
         ProfileTrigger::class
     ), version = 1
 )
+@TypeConverters(DateTime::class)
 abstract class SettingsProfilesDatabase : RoomDatabase() {
 
     abstract fun userProfiles(): UserProfileDao
