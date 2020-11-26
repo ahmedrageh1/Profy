@@ -12,7 +12,7 @@ import java.util.*
 @Entity(tableName = "profile_triggers")
 data class ProfileTrigger(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0,
     @TriggerType
     @ColumnInfo(name = "type")
     val type: Int,
@@ -26,30 +26,35 @@ data class ProfileTrigger(
     val longitude: Double? = null,
     @ColumnInfo(name = "range")
     val range: Float? = null,
-    @ColumnInfo(name = "time_from")
-    val timeFrom: Date? = null,
-    @ColumnInfo(name = "time_to")
-    val timeTo: Date? = null,
-    @ColumnInfo(name = "weekDays")
-    val weekDays: Byte = 0, //7 bits for 7 week days (max value 127)
+    @ColumnInfo(name = "time")
+    val time: Date? = null,
+    @ColumnInfo(name = "week_days")
+    var weekDaysFrom: Int = 0, //7 bits for 7 week days (max value 127)
     @ColumnInfo(name = "repeat_weekly")
-    val repeatWeekly: Boolean
+    val repeatWeekly: Boolean = false
 ) : BaseObservable(), IdentifiedItem {
 
     override fun getIdentifier() = id
 
+    fun onDayTriggered(dayBit: Int) {
+        weekDaysFrom = weekDaysFrom xor dayBit
+    }
+
     companion object {
-        const val TRIGGER_TYPE_BLUETOOTH = 1
-        const val TRIGGER_TYPE_WIFI = 2
-        const val TRIGGER_TYPE_LOCATION = 3
-        const val TRIGGER_TYPE_TIME = 4
+        const val TRIGGER_TYPE_TIME = 1
+        const val TRIGGER_TYPE_BLUETOOTH = 2
+        const val TRIGGER_TYPE_WIFI = 3
+        const val TRIGGER_TYPE_LOCATION = 4
+        const val TRIGGER_TYPE_URL = 5
+
     }
 
     @IntDef(
+        TRIGGER_TYPE_TIME,
         TRIGGER_TYPE_BLUETOOTH,
         TRIGGER_TYPE_WIFI,
         TRIGGER_TYPE_LOCATION,
-        TRIGGER_TYPE_TIME
+        TRIGGER_TYPE_URL
     )
     @Retention(AnnotationRetention.SOURCE)
     annotation class TriggerType

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.rageh.profy.data.entity.ProfileTrigger" />
+
+        <variable
+                name="trigger"
+                type="ProfileTrigger" />
+
+        <variable
+                name="label"
+                type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true">
+
+        <View
+                android:id="@+id/header_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/separator"
+                tools:ignore="MissingConstraints" />
+
+        <TextView
+                android:id="@+id/week_days_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{label}"
+                tools:ignore="MissingConstraints"
+                tools:text="Label" />
+
+        <CheckBox
+                android:id="@+id/sunday_cb"
+                style="@style/weekDayStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="@{trigger.weekDaysFrom %2 >0}"
+                android:onCheckedChanged="@{(cb, isChecked) -> trigger.onDayTriggered(0x01)}"
+                android:text="@string/letter_sunday"
+                app:layout_constraintDimensionRatio="1:1"
+                tools:ignore="MissingConstraints" />
+
+        <CheckBox
+                android:id="@+id/monday_cb"
+                style="@style/weekDayStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="@{trigger.weekDaysFrom %4 >1}"
+                android:onCheckedChanged="@{(cb, isChecked) -> trigger.onDayTriggered(0x02)}"
+                android:text="@string/letter_monday"
+                app:layout_constraintDimensionRatio="1:1"
+                tools:ignore="MissingConstraints" />
+
+        <CheckBox
+                android:id="@+id/tuesday_cb"
+                style="@style/weekDayStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="@{trigger.weekDaysFrom %8 >3}"
+                android:onCheckedChanged="@{(cb, isChecked) -> trigger.onDayTriggered(0x04)}"
+                android:text="@string/letter_tuesday"
+                app:layout_constraintDimensionRatio="1:1"
+                tools:ignore="MissingConstraints" />
+
+        <CheckBox
+                android:id="@+id/wednesday_cb"
+                style="@style/weekDayStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="@{trigger.weekDaysFrom %16 >7}"
+                android:onCheckedChanged="@{(cb, isChecked) -> trigger.onDayTriggered(0x08)}"
+                android:text="@string/letter_wednesday"
+                app:layout_constraintDimensionRatio="1:1"
+                tools:checked="true"
+                tools:ignore="MissingConstraints" />
+
+        <CheckBox
+                android:id="@+id/thursday_cb"
+                style="@style/weekDayStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="@{trigger.weekDaysFrom %32 >15}"
+                android:onCheckedChanged="@{(cb, isChecked) -> trigger.onDayTriggered(0x10)}"
+                android:text="@string/letter_thursday"
+                app:layout_constraintDimensionRatio="1:1"
+                tools:ignore="MissingConstraints" />
+
+        <CheckBox
+                android:id="@+id/friday_cb"
+                style="@style/weekDayStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="@{trigger.weekDaysFrom %64 >31}"
+                android:onCheckedChanged="@{(cb, isChecked) -> trigger.onDayTriggered(0x20)}"
+                android:text="@string/letter_friday"
+                app:layout_constraintDimensionRatio="1:1"
+                tools:ignore="MissingConstraints" />
+
+        <CheckBox
+                android:id="@+id/saturday_cb"
+                style="@style/weekDayStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="@{trigger.weekDaysFrom %128 >63}"
+                android:onCheckedChanged="@{(cb, isChecked) -> trigger.onDayTriggered(0x40)}"
+                android:text="@string/letter_saturday"
+                app:layout_constraintDimensionRatio="1:1"
+                tools:ignore="MissingConstraints" />
+
+        <View
+                android:id="@+id/footer_separator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/separator"
+                tools:ignore="MissingConstraints" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/horizontal_flow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/default_screen_padding"
+                android:paddingEnd="@dimen/default_screen_padding"
+                app:constraint_referenced_ids="sunday_cb,monday_cb,tuesday_cb,
+                wednesday_cb,thursday_cb,friday_cb,saturday_cb"
+                app:flow_horizontalStyle="spread_inside"
+                tools:ignore="MissingConstraints" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:constraint_referenced_ids="header_separator,week_days_tv,horizontal_flow,footer_separator"
+                app:flow_horizontalAlign="start"
+                app:flow_verticalGap="@dimen/default_screen_padding"
+                app:flow_verticalStyle="spread"
+                tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

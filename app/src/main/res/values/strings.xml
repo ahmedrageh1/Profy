@@ -32,4 +32,21 @@
     <string name="brightness_level">Brightness Level</string>
     <string name="sleep_after">Sleep After</string>
     <string name="err_invalid_profile_name">Invalid profile name!</string>
+    <string name="profile_trigger">Profile Trigger</string>
+    <string name="select_trigger_type">Select Trigger Type</string>
+    <string name="trigger_type_time">Time</string>
+    <string name="trigger_type_bluetooth">Bluetooth</string>
+    <string name="trigger_type_wifi">WiFi</string>
+    <string name="trigger_type_geo">Geo Location</string>
+    <string name="trigger_type_url">Url (QR code, NFC tag…etc)</string>
+    <string name="msg_unavailable_in_this_version">Unavailable in this version</string>
+    <string name="week_days">Week Days</string>
+    <string name="letter_sunday">S</string>
+    <string name="letter_monday">M</string>
+    <string name="letter_tuesday">T</string>
+    <string name="letter_wednesday">W</string>
+    <string name="letter_thursday">T</string>
+    <string name="letter_friday">F</string>
+    <string name="letter_saturday">S</string>
+
 </resources>

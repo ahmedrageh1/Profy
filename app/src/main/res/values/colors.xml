@@ -4,4 +4,7 @@
     <color name="colorPrimary">#5F258E</color>
     <color name="colorPrimaryDark">#4D1E72</color>
     <color name="colorAccent">#8837CC</color>
+    <color name="separator">#CCB0B0B0</color>
+    <color name="week_day_checked">#A0B0B0B0</color>
+    <color name="week_day_unchecked">#40B0B0B0</color>
 </resources>

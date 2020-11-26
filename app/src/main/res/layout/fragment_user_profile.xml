@@ -34,6 +34,11 @@
                     android:layout_height="wrap_content"
                     app:editTextValidationErrorMessage="@{@string/err_invalid_profile_name}"
                     app:editTextValidationType="@{EditTextValidator.TYPE_FULL_NAME}"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:boxBackgroundMode="filled"
+                    app:boxCollapsedPaddingTop="0dp"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="1dp"
                     tools:ignore="MissingConstraints">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -45,6 +50,30 @@
                         android:maxLines="1"
                         android:text="@={vm.defaultProfile.name}" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    android:id="@+id/trigger_lbl_tv"
+                    style="@style/field_lbl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/profile_trigger"
+                    tools:ignore="MissingConstraints" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/triggerSp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:selectionItemId="@={vm.defaultProfile.triggerId}"
+                    tools:ignore="MissingConstraints" />
+
+            <ImageView
+                    android:id="@+id/addTriggerBt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/ic_add_48"
+                    tools:ignore="ContentDescription,MissingConstraints" />
 
             <CheckBox
                     android:id="@+id/audioProfileC"
@@ -99,7 +128,16 @@
                     tools:ignore="ContentDescription,MissingConstraints" />
 
             <androidx.constraintlayout.helper.widget.Flow
-                    android:id="@+id/flow1"
+                    android:id="@+id/trigger_flow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="triggerSp,addTriggerBt"
+                    app:flow_horizontalGap="12dp"
+                    app:flow_horizontalStyle="spread"
+                    tools:ignore="MissingConstraints" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/audio_flow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="@{vm.includeAudioProfile ? View.VISIBLE : View.GONE}"
@@ -109,7 +147,7 @@
                     tools:ignore="MissingConstraints" />
 
             <androidx.constraintlayout.helper.widget.Flow
-                    android:id="@+id/flow2"
+                    android:id="@+id/display_flow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="@{vm.includeDisplayProfile ? View.VISIBLE : View.GONE}"
@@ -122,7 +160,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:constraint_referenced_ids="nameIL,audioProfileC,flow1,displayProfileC,flow2"
+                    app:constraint_referenced_ids="nameIL,trigger_lbl_tv,trigger_flow,
+                    audioProfileC,audio_flow,
+                    displayProfileC,display_flow"
                     app:flow_horizontalAlign="start"
                     app:flow_verticalBias="0"
                     app:flow_verticalGap="12dp"

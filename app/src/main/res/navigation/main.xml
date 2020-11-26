@@ -29,4 +29,15 @@
             android:label="fragment_display"
             tools:layout="@layout/fragment_display_profile" />
 
+    <dialog
+            android:id="@+id/triggerTypeDialogFragment"
+            android:name="com.rageh.profy.presentation.ui.trigger.TriggerTypeDialogFragment"
+            android:label="dialog_fragment_trigger_type" />
+
+    <fragment
+            android:id="@+id/timeTriggerFragment"
+            android:name="com.rageh.profy.presentation.ui.trigger.TimeTriggerFragment"
+            android:label="fragment_time_trigger"
+            tools:layout="@layout/fragment_time_trigger" />
+
 </navigation>

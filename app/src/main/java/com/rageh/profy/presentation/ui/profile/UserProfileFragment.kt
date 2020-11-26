@@ -46,6 +46,9 @@ class UserProfileFragment : Fragment() {
         addDisplayProfileBt.setOnClickListener {
             view.findNavController().navigate(R.id.displayProfileFragment)
         }
+        addTriggerBt.setOnClickListener {
+            view.findNavController().navigate(R.id.triggerTypeDialogFragment)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

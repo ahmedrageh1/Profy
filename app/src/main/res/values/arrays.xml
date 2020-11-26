@@ -17,5 +17,12 @@
         <item>@string/time_never</item>
     </string-array>
 
+    <string-array name="trigger_types">
+        <item>@string/trigger_type_time</item>
+        <item>@string/trigger_type_bluetooth</item>
+        <item>@string/trigger_type_wifi</item>
+        <item>@string/trigger_type_geo</item>
+        <item>@string/trigger_type_url</item>
+    </string-array>
 
 </resources>

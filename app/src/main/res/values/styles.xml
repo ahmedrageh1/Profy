@@ -27,4 +27,12 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="weekDayStyle">
+        <item name="android:button">@null</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/week_day_bg</item>
+    </style>
+
 </resources>
