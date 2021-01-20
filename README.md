@@ -20,7 +20,7 @@ Profy project using the following patterns and technologies
 * LiveData
 #### UI and Design 
 * Material design components 
-* Light and Dark themes 
+* Light and Dark themes (DayNight)
 * Navigation
 * ConstraintLayout with helpers 
 * View Binding
