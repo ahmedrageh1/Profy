@@ -1,17 +1,15 @@
 package com.rageh.profy.presentation.ui.profile
 
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
+import androidx.lifecycle.*
 import com.rageh.profy.domain.profile.AudioProfileHandler
 import com.rageh.profy.domain.profile.DisplayProfileHandler
 import com.rageh.profy.domain.profile.UserProfileHandler
-import dagger.hilt.android.scopes.FragmentScoped
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-@FragmentScoped
-class UserProfileViewModel @ViewModelInject constructor(
+@HiltViewModel
+class UserProfileViewModel @Inject constructor(
     private val audioProfilesHandler: AudioProfileHandler,
     private val displayProfilesHandler: DisplayProfileHandler,
     private val userProfileHandler: UserProfileHandler
@@ -21,15 +19,15 @@ class UserProfileViewModel @ViewModelInject constructor(
     var includeDisplayProfile = MutableLiveData(false)
 
     val availableAudioProfiles by lazy {
-        audioProfilesHandler.getAllAudioProfiles()
+        audioProfilesHandler.getAllAudioProfiles().asLiveData(Dispatchers.IO)
     }
 
     val availableDisplayProfiles by lazy {
-        displayProfilesHandler.getAllDisplayProfiles()
+        displayProfilesHandler.getAllDisplayProfiles().asLiveData(Dispatchers.IO)
     }
 
     val defaultProfile by lazy {
-        userProfileHandler.getDefaultUserProfile().map {
+        userProfileHandler.getDefaultUserProfile().asLiveData(Dispatchers.IO).map {
             it.apply {
                 id = 0
                 name = ""
@@ -47,6 +45,7 @@ class UserProfileViewModel @ViewModelInject constructor(
             }
         }
         return userProfileHandler.insertUserProfile(requireNotNull(defaultProfile.value))
+            .asLiveData(Dispatchers.IO)
     }
 
 

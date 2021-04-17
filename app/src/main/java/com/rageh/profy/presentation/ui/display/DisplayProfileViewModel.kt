@@ -1,13 +1,15 @@
 package com.rageh.profy.presentation.ui.display
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.rageh.profy.domain.profile.DisplayProfileHandler
-import dagger.hilt.android.scopes.FragmentScoped
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-@FragmentScoped
-class DisplayProfileViewModel @ViewModelInject constructor(
+@HiltViewModel
+class DisplayProfileViewModel @Inject constructor(
     private val handler: DisplayProfileHandler
 ) :
     ViewModel() {
@@ -47,6 +49,6 @@ class DisplayProfileViewModel @ViewModelInject constructor(
     fun saveDisplayProfile() = handler.insert(currentDisplayProfile.apply {
         screenAutoBrightness = requireNotNull(autoBrightness.value)
         screenOffTimeout = screenTimeoutValues[requireNotNull(screenTimeoutIndex.value)]
-    })
+    }).asLiveData(Dispatchers.IO)
 
 }

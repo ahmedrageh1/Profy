@@ -10,11 +10,11 @@ import androidx.navigation.findNavController
 import com.rageh.profy.R
 import com.rageh.profy.databinding.FragmentUserProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_user_profile.*
 
 @AndroidEntryPoint
 class UserProfileFragment : Fragment() {
 
+    private lateinit var binding: FragmentUserProfileBinding
     private val viewModel: UserProfileViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,14 +25,14 @@ class UserProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return DataBindingUtil.inflate<FragmentUserProfileBinding>(
+        return FragmentUserProfileBinding.inflate(
             inflater,
-            R.layout.fragment_user_profile,
             container,
             false
         ).apply {
+            binding=this
             lifecycleOwner = viewLifecycleOwner
             vm = viewModel
         }.root
@@ -40,13 +40,13 @@ class UserProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        addAudioProfileBt.setOnClickListener {
+        binding.addAudioProfileBt.setOnClickListener {
             view.findNavController().navigate(R.id.audioProfileFragment)
         }
-        addDisplayProfileBt.setOnClickListener {
+        binding.addDisplayProfileBt.setOnClickListener {
             view.findNavController().navigate(R.id.displayProfileFragment)
         }
-        addTriggerBt.setOnClickListener {
+        binding.addTriggerBt.setOnClickListener {
             view.findNavController().navigate(R.id.triggerTypeDialogFragment)
         }
     }

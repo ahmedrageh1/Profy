@@ -25,10 +25,9 @@ class AudioProfileFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return DataBindingUtil.inflate<FragmentAudioProfileBinding>(
+    ): View {
+        return FragmentAudioProfileBinding.inflate(
             inflater,
-            R.layout.fragment_audio_profile,
             container,
             false
         ).apply {

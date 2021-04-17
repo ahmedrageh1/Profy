@@ -25,10 +25,9 @@ class DisplayProfileFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return DataBindingUtil.inflate<FragmentDisplayProfileBinding>(
+    ): View {
+        return FragmentDisplayProfileBinding.inflate(
             inflater,
-            R.layout.fragment_display_profile,
             container,
             false
         ).apply {

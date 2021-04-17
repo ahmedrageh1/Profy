@@ -1,13 +1,15 @@
 package com.rageh.profy.presentation.ui.audio
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.rageh.profy.domain.profile.AudioProfileHandler
-import dagger.hilt.android.scopes.FragmentScoped
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-@FragmentScoped
-class AudioProfileViewModel @ViewModelInject constructor(
+@HiltViewModel
+class AudioProfileViewModel @Inject constructor(
     private val handler: AudioProfileHandler
 ) :
     ViewModel() {
@@ -24,6 +26,6 @@ class AudioProfileViewModel @ViewModelInject constructor(
 
     fun saveAudioProfile() = handler.insert(currentAudioProfile.apply {
         ringerMode = requireNotNull(liveRingerMode.value)
-    })
+    }).asLiveData(Dispatchers.IO)
 
 }
