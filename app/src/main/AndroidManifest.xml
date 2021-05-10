@@ -25,9 +25,7 @@
             tools:ignore="GoogleAppIndexingWarning">
 
         <receiver
-                android:name=".receiver.BluetoothDevicesStatusReceiver"
-                android:enabled="true"
-                android:exported="true">
+                android:name=".receiver.BluetoothDevicesStatusReceiver">
             <intent-filter>
                 <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
                 <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
@@ -35,13 +33,9 @@
             </intent-filter>
         </receiver>
         <receiver
-                android:name=".receiver.GeofenceBroadcastReceiver"
-                android:enabled="true"
-                android:exported="false" />
+                android:name=".receiver.GeofenceBroadcastReceiver" />
         <receiver
-                android:name=".receiver.BootCompleteReceiver"
-                android:enabled="true"
-                android:exported="true">
+                android:name=".receiver.BootCompleteReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

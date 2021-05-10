@@ -32,16 +32,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-      return  FragmentHomeBinding.inflate(inflater,container,false).apply { binding=this }.root
+    ): View {
+        return FragmentHomeBinding.inflate(inflater, container, false).apply {
+            binding = this
+            adapter = this@HomeFragment.adapter
+        }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerView.apply {
-            adapter = this@HomeFragment.adapter
-            setHasFixedSize(true)
-        }
         viewModel.userProfiles.observe(viewLifecycleOwner, {
             adapter.submitList(it)
         })
